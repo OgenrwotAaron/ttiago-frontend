@@ -1,7 +1,33 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Card, CardActionArea, CardMedia, makeStyles, Chip, Typography } from '@material-ui/core';
+import Moment from 'react-moment';
 
-const Card = ({ article }) => {
+import ScheduleIcon from '@material-ui/icons/Schedule';
+
+const useStyles = makeStyles(theme=>({
+    details:{
+        position:'absolute',
+        bottom:0,
+        background:'linear-gradient(0deg, #000000b8, transparent)',
+        width:'100%',
+        padding:theme.spacing(2),
+    },
+    title:{
+        color:'white',
+        marginTop:theme.spacing(1),
+    },
+    time:{
+        display:'flex',
+        color:'#b5b5b5'
+    },
+    card:{
+        marginBottom:theme.spacing(2),
+    }
+}))
+
+const ArticleCard = ({ article }) => {
+
+    const classes = useStyles()
 
     const imageUrl = process.env.NODE_ENV !== 'development' ? 
                         article.image[0].url
@@ -9,26 +35,28 @@ const Card = ({ article }) => {
                         process.env.REACT_APP_BACKEND_URL + article.image[0].url
 
     return ( 
-        <Link to={`/article/${article.id}`} className='uk-link-reset'>
-            <div className='uk-card uk-card-muted'>
-                <div className='uk-card-media-top'>
-                    <img
-                        src={imageUrl}
-                        alt={article.image.url}
-                        height='100'
+            <Card className={classes.card}>
+                <CardActionArea href={`/article/${article.id}`}>
+                    <CardMedia
+                        image={imageUrl}
+                        component='img'
                     />
-                </div>
-                <div className='uk-card-body'>
-                    <p id='category' className='uk-text-uppercase'>
-                        {article.category.name}
-                    </p>
-                    <p id='title' className='uk-text-large'>
-                        {article.title}
-                    </p>
-                </div>
-            </div>
-        </Link>
+                    <div className={classes.details}>
+                        <Chip color='primary' label={article.category.name} size='small' />
+                        <Typography variant='h5' className={classes.title}>{article.title}<Typography variant='caption'>- By {article.author}</Typography></Typography>
+                        <Typography className={classes.time}>
+                            <ScheduleIcon fontSize='small' />
+                            &nbsp;
+                            <Moment fromNow ago >
+                                {article.published_at}
+                            </Moment>
+                            &nbsp;
+                            ago
+                        </Typography>
+                    </div>
+                </CardActionArea>
+            </Card>
      );
 }
  
-export default Card;
+export default ArticleCard;
