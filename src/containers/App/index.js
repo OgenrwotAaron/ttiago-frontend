@@ -6,6 +6,10 @@ import Nav from '../../components/Nav';
 import Articles from '../Articles';
 import Article from '../Article';
 import Category from '../Category'
+import Footer from '../../components/Footer';
+import Authors from '../Authors';
+import About from '../About';
+import Author from '../Author'
 
 const App = () =>{
     return (
@@ -15,7 +19,11 @@ const App = () =>{
                 <Route path='/' exact component={Articles} />
                 <Route path='/article/:id' exact component={Article} />
                 <Route path='/category/:id' exact component={Category} />
+                <Route path='/authors' exact component={Authors} />
+                <Route path='/author/:id' exact component={Author} />
+                <Route path='/about' exact component={About} />
             </Switch>
+            <Footer/>
         </div>
     )
 }

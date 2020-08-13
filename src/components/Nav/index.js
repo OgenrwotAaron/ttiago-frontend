@@ -79,20 +79,23 @@ const Nav = () =>{
                     </div>
                 </Hidden>
                 <ButtonGroup variant='text'>
-                    <Button>Authors</Button>
-                    <Button>About</Button>
-                    <Button>SignIn</Button>
-                    <Button>Subscribe</Button>
+                    <Button href='/authors'>Authors</Button>
+                    <Button href='/about' >About</Button>
+                    <Button href='#subscribe' >Subscribe</Button>
+                    <Button href='/contact' >Contact</Button>
                 </ButtonGroup>
             </Toolbar>
             <Divider/>
             <Toolbar>
-                <Typography className={classes.title} variant='h4'>
-                    TRUMPET
-                    <Typography component='span' variant='body2'>
-                        Magazine
+                <Link to='/' className={classes.title}>
+                    <Typography variant='h4'>
+                        NILE Trumpet
+                        <Typography component='span' variant='body2'>
+                        &nbsp; Magazine
+                        </Typography>
                     </Typography>
-                </Typography>
+                </Link>
+                
                 <div className={classes.search}>
                     <div className={classes.searchIcon}>
                         <SearchIcon/>

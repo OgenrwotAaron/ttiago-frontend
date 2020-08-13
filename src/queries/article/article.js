@@ -6,6 +6,12 @@ const ARTICLE_QUERY = gql`
             id
             title
             content
+            author {
+                user_name
+                avatar {
+                    url
+                }
+            }
             image {
                 url
             }

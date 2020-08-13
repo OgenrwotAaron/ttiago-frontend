@@ -4,17 +4,21 @@ import { Grid, Typography, makeStyles } from '@material-ui/core';
 
 import ClearAllIcon from '@material-ui/icons/ClearAll';
 import LatestArticles from '../LatestArticles';
+import Parties from '../Parties';
+import NewSlider from '../NewsSlider';
 
 const useStyles = makeStyles(theme=>({
     heading:{
         display:'flex',
         alignItems:'center',
-        margin:theme.spacing(2,0,1,0)
+        margin:theme.spacing(2,0,1,0),
+        fontWeight:'bold'
     },
     heading2:{
         display:'flex',
         alignItems:'center',
-        margin:theme.spacing(1,0)
+        margin:theme.spacing(1,0),
+        fontWeight:'bold'
     }
 }))
 
@@ -33,15 +37,15 @@ const Articles = ({articles}) => {
                     <Card article={leftArticle} key={`article_${leftArticle.id}`} />
                 </Grid>
                 <Grid item sm={4} xs={12}>
-                    <div className='uk-child-width-1-2@m uk-grid-match' data-uk-grid>
                         {rightArticles.map(article => (
                             <Card article={article} key={`article_${article.id}`} />
                         ))}
-                    </div>
                 </Grid>
-            </Grid>
+            </Grid>  
             <Typography variant='h5' className={classes.heading2} component='i'> <ClearAllIcon fontSize='large'/> LATEST ARTICLES</Typography>
             <LatestArticles articles={articles}/>
+            <Parties article={articles.filter(article=>article.category.name==='Parties').reverse()[0]} />
+            <NewSlider articles={articles}/>
         </div>
     )
 }

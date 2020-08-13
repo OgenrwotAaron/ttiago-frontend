@@ -15,6 +15,7 @@ const useStyles = makeStyles(theme=>({
     title:{
         color:'white',
         marginTop:theme.spacing(1),
+        overflowX:'wrap'
     },
     time:{
         display:'flex',
@@ -43,7 +44,7 @@ const ArticleCard = ({ article }) => {
                     />
                     <div className={classes.details}>
                         <Chip color='primary' label={article.category.name} size='small' />
-                        <Typography variant='h5' className={classes.title}>{article.title}<Typography variant='caption'>- By {article.author}</Typography></Typography>
+                        <Typography variant='h5' className={classes.title}>{article.title}<Typography variant='caption'>- By {article.author.user_name}</Typography></Typography>
                         <Typography className={classes.time}>
                             <ScheduleIcon fontSize='small' />
                             &nbsp;

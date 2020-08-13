@@ -8,6 +8,9 @@ const CATEGORY_QUERY = gql`
                 id
                 title
                 content
+                author {
+                    user_name
+                }
                 image {
                     url
                 }
