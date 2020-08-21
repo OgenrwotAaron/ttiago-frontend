@@ -10,6 +10,7 @@ import Footer from '../../components/Footer';
 import Authors from '../Authors';
 import About from '../About';
 import Author from '../Author'
+import Contact from '../Contact';
 
 const App = () =>{
     return (
@@ -22,6 +23,7 @@ const App = () =>{
                 <Route path='/authors' exact component={Authors} />
                 <Route path='/author/:id' exact component={Author} />
                 <Route path='/about' exact component={About} />
+                <Route path='/contact' exact component={Contact} />
             </Switch>
             <Footer/>
         </div>

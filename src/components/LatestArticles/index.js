@@ -21,6 +21,8 @@ const LatestArticles = ({articles}) => {
 
     const classes = useStyles()
 
+    let reversedArticles = [...articles].reverse()
+
     const settings = {
         infinite:true,
         speed:500,
@@ -31,10 +33,10 @@ const LatestArticles = ({articles}) => {
     }
 
     return ( 
-        <div>
+        <div className={classes.root}>
             <Grid container spacing={1}>
                 <Grid item xs={12} sm={9} md={8}>
-                    {articles.slice(0,3).map(article=>(
+                    {reversedArticles.slice(0,3).map(article=>(
                             <div className={classes.cards} key={article.id}>
                                 <LatestCard article={article} />
                             </div>

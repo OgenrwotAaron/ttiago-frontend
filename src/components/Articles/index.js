@@ -12,14 +12,16 @@ const useStyles = makeStyles(theme=>({
         display:'flex',
         alignItems:'center',
         margin:theme.spacing(2,0,1,0),
-        fontWeight:'bold'
+        fontWeight:'bold',
+        color:'#5ba124'
     },
     heading2:{
         display:'flex',
         alignItems:'center',
-        margin:theme.spacing(1,0),
-        fontWeight:'bold'
-    }
+        margin:theme.spacing(2,0),
+        fontWeight:'bold',
+        color:'#5ba124'
+    },
 }))
 
 const Articles = ({articles}) => {

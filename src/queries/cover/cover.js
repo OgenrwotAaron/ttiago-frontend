@@ -1,6 +1,6 @@
 import gql from 'graphql-tag'
 
-const CoverQuery = gql`
+const COVER_QUERY = gql`
     query Covers {
         covers {
             id
@@ -12,3 +12,5 @@ const CoverQuery = gql`
         }
     }
 `
+
+export default COVER_QUERY

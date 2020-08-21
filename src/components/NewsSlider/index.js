@@ -5,7 +5,8 @@ import Moment from 'react-moment'
 
 const useStyles = makeStyles(theme=>({
     root:{
-        width:'98%'
+        width:'98%',
+        padding:theme.spacing(2,0)
     },
     card:{
         margin:theme.spacing(3)
@@ -26,6 +27,7 @@ const NewSlider = ({articles}) => {
     const settings = {
         infinite:true,
         speed:500,
+        arrows:false,
         slidesToShow:4,
         slidesToScroll:1,
         autoplay:true,
@@ -71,6 +73,7 @@ const NewSlider = ({articles}) => {
                                 <CardMedia
                                     image={imageUrl}
                                     component='img'
+                                    height='150'
                                 />
                                 <div className={classes.category}>
                                     <Typography style={{fontWeight:'bold'}}>

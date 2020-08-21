@@ -4,10 +4,11 @@ import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import InstagramIcon from '@material-ui/icons/Instagram';
+import YouTubeIcon from '@material-ui/icons/YouTube';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles(theme=>({
     root:{
-        width:'100%',
         marginTop:theme.spacing(4)
     },
     subscribe:{
@@ -15,15 +16,22 @@ const useStyles = makeStyles(theme=>({
         justifyContent:'center',
         alignItems:'center',
         backgroundImage:'url(/images/footer.jpg)',
-        backgroundSize:'contain',
-        backgroundAttachment:'fixed'
+        backgroundSize:'cover',
+        backgroundAttachment:'fixed',
+        backgroundRepeat:'no-repeat'
     },
     input:{
         padding:theme.spacing(6,4),
         backgroundColor:'#000000b0',
     },
     details:{
-        padding:theme.spacing(4,2)
+        padding:theme.spacing(4,2,2,2)
+    },
+    copy:{
+        display:'flex',
+        justifyContent:'center',
+        alignItems:'center',
+        padding:theme.spacing(2)
     }
 }))
 
@@ -34,7 +42,7 @@ const Footer = () => {
     return ( 
         <div className={classes.root}>
             <div className={classes.subscribe} id='subscribe'>
-                <Grid container spacing={2} className={classes.input}>
+                <Grid container spacing={1} className={classes.input}>
                     <Grid item xs={12} sm={6}>
                         <Paper>
                             <TextField
@@ -58,30 +66,30 @@ const Footer = () => {
             </div>
             <Grid container spacing={2} className={classes.details}>
                 <Grid item sm={4}>
-                    <Typography variant='h4' component='b'>
-                        TRUMPET
-                    </Typography>
-                    <Typography variant='body1' color='textSecondary'>
-                        MAGAZINE
-                    </Typography>
-                    <Typography variant='body1' color='textSecondary'>
-                        support@thetrumpet.com
-                    </Typography>
+                    <Typography style={{fontWeight:'bold'}} component='b'>NILE TRUMPET</Typography>
+                    <img
+                        src='/favicon.ico'
+                        alt='footer'
+                        style={{width:'80%'}}
+                    />
                 </Grid>
                 <Grid item sm={5}>
                     <Typography style={{fontWeight:'bold'}} component='b'>PAGES</Typography>
                     <List component='nav'>
                         <ListItem button>
-                            <ListItemText primaryTypographyProps={{color:'textSecondary'}} primary='Authors' />
+                            <Link to='/authors'>
+                                <ListItemText primaryTypographyProps={{color:'textSecondary'}} primary='Editors' />
+                            </Link>
                         </ListItem>
                         <ListItem button>
-                            <ListItemText primaryTypographyProps={{color:'textSecondary'}} primary='About' />
+                            <Link to='/about'>
+                                <ListItemText primaryTypographyProps={{color:'textSecondary'}} primary='About' />
+                            </Link>
                         </ListItem>
                         <ListItem button>
-                            <ListItemText primaryTypographyProps={{color:'textSecondary'}} primary='Sign In' />
-                        </ListItem>
-                        <ListItem button>
-                            <ListItemText primaryTypographyProps={{color:'textSecondary'}} primary='Subscribe' />
+                            <Link to='#subscribe'>
+                                <ListItemText primaryTypographyProps={{color:'textSecondary'}} primary='Subscribe' />
+                            </Link>
                         </ListItem>
                     </List>
                 </Grid>
@@ -97,9 +105,22 @@ const Footer = () => {
                         <IconButton>
                             <InstagramIcon fontSize='large'/>
                         </IconButton>
+                        <IconButton>
+                            <YouTubeIcon fontSize='large' />
+                        </IconButton>
                     </div>
+                    <img
+                        alt='contact'
+                        src='/images/contact.svg'
+                        width='100%'
+                    />
                 </Grid>
             </Grid>
+            <div className={classes.copy}>
+                <Typography color='textSecondary' variant='caption'>
+                    &copy; Copyright {new Date().getFullYear()}, All rights reserved | Powered By The Nile Trumpet
+                </Typography>
+            </div>
         </div>
      );
 }

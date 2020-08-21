@@ -1,18 +1,21 @@
 import React from 'react';
 import Query from '../Query'
-import { Link } from 'react-router-dom';
-import { Toolbar, Button, ButtonGroup, IconButton, Hidden, makeStyles, Typography, InputBase, fade, Divider } from '@material-ui/core'
-import SearchIcon from '@material-ui/icons/Search';
+import { Link, useLocation } from 'react-router-dom';
+import { Toolbar, Button, ButtonGroup, IconButton, Hidden, makeStyles, Typography, fade, Divider } from '@material-ui/core'
 import FacebookIcon from '@material-ui/icons/Facebook';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import InstagramIcon from '@material-ui/icons/Instagram';
+import ReactMoment from 'react-moment'
+import TypeWriter from 'typewriter-effect'
 
 import CATEGORIES_QUERY from '../../queries/category/categories';
+import COVER_QUERY from '../../queries/cover/cover';
+import ARTICLES_QUERY from '../../queries/article/articles';
 
 const useStyles = makeStyles(theme=>({
     topNav:{
         justifyContent:'space-between',
-        padding:0
+        padding:0,
     },
     link:{
         padding:theme.spacing(1),
@@ -62,78 +65,114 @@ const useStyles = makeStyles(theme=>({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    logo:{
+        width:'20%',
+        filter:'brightness(1.5)'
+    },
+    hero:{
+        height:'100vh',
+        backgroundSize:'cover',
+        backgroundRepeat:'no-repeat',
+        margin:theme.spacing(0,-1),
+        backgroundPosition:'center'
+    },
+    overlay:{
+        backgroundColor:'#00000069',
+        height:'100vh'
+    },
+    topStory:{
+        display:'flex',
+        alignItems:'center',
+        padding:theme.spacing(2)
+    },
+    headline:{
+        backgroundColor:'#5ba124',
+        color:'white',
+        boxShadow:'0 0 0 black',
+        borderRadius:'25px 0 0 25px',
+        marginRight:5
+    },
 }))
 
 const Nav = () =>{
 
     const classes = useStyles()
 
+    const { pathname } = useLocation()
+
     return (
         <div>
             <Toolbar className={classes.topNav} component='nav' variant='dense'>
                 <Hidden xsDown>
                     <div>
-                        <IconButton aria-label='facebook-link'><FacebookIcon/></IconButton>
-                        <IconButton aria-label='twitter-link'><TwitterIcon/></IconButton>
-                        <IconButton aria-label='instagram-link'><InstagramIcon/></IconButton>
+                        <IconButton aria-label='facebook-link'><FacebookIcon style={{color:'#5ba124'}}/></IconButton>
+                        <IconButton aria-label='twitter-link'><TwitterIcon style={{color:'#5ba124'}}/></IconButton>
+                        <IconButton aria-label='instagram-link'><InstagramIcon style={{color:'#5ba124'}}/></IconButton>
                     </div>
+                    <Typography style={{color:'#5ba124'}}>
+                        <ReactMoment format='Do | MMM | YYYY'>{new Date()}</ReactMoment>
+                    </Typography>
                 </Hidden>
                 <ButtonGroup variant='text'>
-                    <Button href='/authors'>Authors</Button>
-                    <Button href='/about' >About</Button>
-                    <Button href='#subscribe' >Subscribe</Button>
-                    <Button href='/contact' >Contact</Button>
+                    <Button style={{color:'#5ba124'}} href='/authors'>Editors</Button>
+                    <Button style={{color:'#5ba124'}} href='/about' >About</Button>
+                    <Button style={{color:'#5ba124'}} href='#subscribe' >Subscribe</Button>
+                    <Button style={{color:'#5ba124'}} href='/contact' >Contact</Button>
                 </ButtonGroup>
             </Toolbar>
             <Divider/>
-            <Toolbar>
-                <Link to='/' className={classes.title}>
-                    <Typography variant='h4'>
-                        NILE Trumpet
-                        <Typography component='span' variant='body2'>
-                        &nbsp; Magazine
-                        </Typography>
-                    </Typography>
-                </Link>
-                
-                <div className={classes.search}>
-                    <div className={classes.searchIcon}>
-                        <SearchIcon/>
-                    </div>
-                    <InputBase
-                        placeholder='Search...'
-                        classes={{
-                            root: classes.inputRoot,
-                            input:classes.inputInput
-                        }}
-                        inputProps = {{ 'aria-label':'search'}}
-                    />
-                </div>
-                
-            </Toolbar>
-            <Query query={CATEGORIES_QUERY} id={null}>
-                {({ data: { categories } }) => {
-                    return (
-                        <div>
-                            <Toolbar component="nav" variant="dense" className={classes.toolbarSecondary}>
-                                <Link to='/'>
-                                    <Typography color='textSecondary'>Home</Typography>
-                                </Link>
-                                {categories.map(category=>(
-                                    <Link 
-                                        key={category.id}
-                                        to={`/category/${category.id}`}
-                                        variant='body2'
-                                        className={classes.link}
-                                    >
-                                        <Typography color='textSecondary'>{category.name}</Typography>
-                                    </Link>
-                                ))}
-                            </Toolbar>
+            {pathname === '/' && <Query query={COVER_QUERY}>
+                {({data:{covers}}) => {
+                    const imageUrl = process.env.NODE_ENV !== 'development' ? 
+                                        covers[covers.length-1].image.url
+                                    :
+                                        process.env.REACT_APP_BACKEND_URL + covers[covers.length-1].image.url
+                    
+                    return <div style={{backgroundImage:`url(${imageUrl})`}} className={classes.hero}>
+                                <div className={classes.overlay}>
+                                    <Query query={CATEGORIES_QUERY} id={null}>
+                                        {({ data: { categories } }) => {
+                                            return (
+                                                <div>
+                                                    <Toolbar component="nav" variant="dense" className={classes.toolbarSecondary}>
+                                                        <Link to='/news'>
+                                                            <Typography style={{color:'whitesmoke'}}>News</Typography>
+                                                        </Link>
+                                                        {categories.map(category=>(
+                                                            <Link 
+                                                                key={category.id}
+                                                                to={`/category/${category.id}`}
+                                                                variant='body2'
+                                                                className={classes.link}
+                                                            >
+                                                                <Typography style={{color:'whitesmoke'}}>{category.name}</Typography>
+                                                            </Link>
+                                                        ))}
+                                                    </Toolbar>
+                                                </div>
+                                            )
+                                        }}
+                                    </Query>
+                                    <Query query={ARTICLES_QUERY}>
+                                        {({data:{articles}})=>{
+                                            return  <div className={classes.topStory}>
+                                                        <Button elevation={0} variant='contained' className={classes.headline}>Headlines</Button>
+                                                        <Typography style={{color:'whitesmoke'}} component='span'>
+                                                            <TypeWriter
+                                                                options={{
+                                                                    strings:articles.map(article=>article.title),
+                                                                    autoStart: true,
+                                                                    loop: true,
+                                                                }}
+                                                            />
+                                                        </Typography>
+                                                    </div>
+                                        }}
+                                    </Query>
+                                </div>
                         </div>
-                    )
                 }}
-            </Query>
+            </Query>}
         </div>
     )
 }

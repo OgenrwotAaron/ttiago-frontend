@@ -24,7 +24,7 @@ const About = (props) => {
             <div className={classes.hero}>
                 <div className={classes.header}>
                     <Typography variant='h3' style={{color:'white'}}>About Us</Typography>
-                    <Typography variant='body1' style={{color:'white'}} component='i'>Trumpet Magazine | "The Inspiration"</Typography>
+                    <Typography variant='body1' style={{color:'white'}} component='i'>Nile Trumpet Magazine | "The Inspirational"</Typography>
                 </div>
             </div>
         </div>
