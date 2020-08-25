@@ -69,7 +69,7 @@ const NewSlider = ({articles}) => {
 
                     return (
                         <Card elevation={0} key={article.id}>
-                            <CardActionArea className={classes.card}>
+                            <CardActionArea href={`/article/${article.id}`} className={classes.card}>
                                 <CardMedia
                                     image={imageUrl}
                                     component='img'
