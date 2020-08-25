@@ -46,52 +46,52 @@ const Parties = ({article={}}) => {
 
     if(Object.keys(article).length<0){
         return null;
+    }else{
+        return ( 
+            <div className={classes.root}>
+                <Grid container spacing={2}>
+                    <Grid item xs={12} sm={6}>
+                        <div className={classes.card}>
+                            <Card>
+                                <CardActionArea>
+                                    <CardMedia
+                                        image={imageUrl}
+                                        component='img'
+                                    />
+                                    <div className={classes.category} >
+                                        <Typography style={{color:'white',textTransform:'uppercase',fontWeight:'bold'}}>
+                                            {article.category.name}
+                                        </Typography>
+                                    </div>
+                                    <div className={classes.time}>
+                                        <Typography style={{color:'#303f9f',display:'flex',flexDirection:'column',alignItems:'center'}} variant='h6'>
+                                            <Moment format='DD'>{article.published_at}</Moment>
+                                            <Moment format='MMM'>{article.published_at}</Moment>
+                                        </Typography>
+                                    </div>
+                                </CardActionArea>
+                            </Card>
+                        </div>
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                        <div className={classes.title}>
+                            <Link to={`/article/${article.id}`}>
+                                <Typography variant='h3' style={{fontWeight:'bold',color:'#f0f3bd'}}>
+                                    {article.title}
+                                </Typography>
+                                <Typography style={{fontWeight:'bold',color:'#f0f3bdd9'}}>
+                                    By {article.author.user_name}
+                                </Typography>
+                                <Typography style={{fontWeight:'bold',color:'#f0f3bdd9'}}>
+                                    Fee: 30K
+                                </Typography>
+                            </Link>
+                        </div>
+                    </Grid>
+                </Grid>
+            </div>
+         );
     }
-
-    return ( 
-        <div className={classes.root}>
-            <Grid container spacing={2}>
-                <Grid item xs={12} sm={6}>
-                    <div className={classes.card}>
-                        <Card>
-                            <CardActionArea>
-                                <CardMedia
-                                    image={imageUrl}
-                                    component='img'
-                                />
-                                <div className={classes.category} >
-                                    <Typography style={{color:'white',textTransform:'uppercase',fontWeight:'bold'}}>
-                                        {article.category.name}
-                                    </Typography>
-                                </div>
-                                <div className={classes.time}>
-                                    <Typography style={{color:'#303f9f',display:'flex',flexDirection:'column',alignItems:'center'}} variant='h6'>
-                                        <Moment format='DD'>{article.published_at}</Moment>
-                                        <Moment format='MMM'>{article.published_at}</Moment>
-                                    </Typography>
-                                </div>
-                            </CardActionArea>
-                        </Card>
-                    </div>
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                    <div className={classes.title}>
-                        <Link to={`/article/${article.id}`}>
-                            <Typography variant='h3' style={{fontWeight:'bold',color:'#f0f3bd'}}>
-                                {article.title}
-                            </Typography>
-                            <Typography style={{fontWeight:'bold',color:'#f0f3bdd9'}}>
-                                By {article.author.user_name}
-                            </Typography>
-                            <Typography style={{fontWeight:'bold',color:'#f0f3bdd9'}}>
-                                Fee: 30K
-                            </Typography>
-                        </Link>
-                    </div>
-                </Grid>
-            </Grid>
-        </div>
-     );
 }
  
 export default Parties;
