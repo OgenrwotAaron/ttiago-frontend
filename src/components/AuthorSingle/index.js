@@ -42,7 +42,7 @@ const AuthorSingle = ({author}) => {
                             process.env.REACT_APP_BACKEND_URL + author.biography.cover_image.url
                             
     const avatarUrl = process.env.NODE_ENV !== 'development' ? 
-                            aauthor.avatar.url
+                            author.avatar.url
                         :
                             process.env.REACT_APP_BACKEND_URL + author.avatar.url
 
