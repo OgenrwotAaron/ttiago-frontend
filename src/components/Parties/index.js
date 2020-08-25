@@ -16,6 +16,7 @@ const useStyles = makeStyles(theme=>({
         bottom:0,
         background:'linear-gradient(0deg, #000000b8, transparent)',
         padding:theme.spacing(2),
+        width:'100%'
     },
     time:{
         background:'white',
