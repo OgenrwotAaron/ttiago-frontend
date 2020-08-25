@@ -171,7 +171,10 @@ const Nav = () =>{
             }
             {pathname === '/' && <Query query={COVER_QUERY}>
                 {({data:{covers}}) => {
-                    const imageUrl = process.env.REACT_APP_BACKEND_URL + covers[covers.length-1].image.url
+                    const imageUrl = process.env.NODE_ENV !== 'development' ?   
+                                        covers[covers.length-1].image.url
+                                    :
+                                        process.env.REACT_APP_BACKEND_URL + covers[covers.length-1].image.url
                     
                     return <div style={{backgroundImage:`url(${imageUrl})`}} className={classes.hero}>
                                 <div className={classes.overlay}>

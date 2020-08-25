@@ -37,7 +37,10 @@ const User = (props) => {
     const classes = useStyles()
 
     const transformImageUri = uri =>{
-        return process.env.REACT_APP_BACKEND_URL + uri
+        return process.env.NODE_ENV !== 'development' ? 
+                        uri
+                    :
+                        process.env.REACT_APP_BACKEND_URL + uri
     }
 
     const renderImage = props =>(
@@ -55,8 +58,14 @@ const User = (props) => {
             <Query query={USER_QUERY} id={id}>
                 {({data:{user}})=>{
                     
-                    const bgUrl = process.env.REACT_APP_BACKEND_URL + user.user_bio.cover.url
-                    const avatarUrl = process.env.REACT_APP_BACKEND_URL + user.avatar.url
+                    const bgUrl = process.env.NODE_ENV !== 'development' ? 
+                                        user.user_bio.cover.url
+                                    :
+                                        process.env.REACT_APP_BACKEND_URL + user.user_bio.cover.url
+                    const avatarUrl = process.env.NODE_ENV !== 'development' ? 
+                                            user.avatar.url
+                                        :
+                                            process.env.REACT_APP_BACKEND_URL + user.avatar.url
 
                     return <div>
                         <div className={classes.hero} style={{backgroundImage:`url(${bgUrl})`}}>

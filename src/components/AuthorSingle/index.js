@@ -36,12 +36,21 @@ const useStyles = makeStyles(theme=>({
 const AuthorSingle = ({author}) => {
     const classes = useStyles()
 
-    const coverImage = process.env.REACT_APP_BACKEND_URL + author.biography.cover_image.url
-    
-    const avatarUrl = process.env.REACT_APP_BACKEND_URL + author.avatar.url
+    const coverImage = process.env.NODE_ENV !== 'development' ? 
+                            author.biography.cover_image.url
+                        :
+                            process.env.REACT_APP_BACKEND_URL + author.biography.cover_image.url
+                            
+    const avatarUrl = process.env.NODE_ENV !== 'development' ? 
+                            aauthor.avatar.url
+                        :
+                            process.env.REACT_APP_BACKEND_URL + author.avatar.url
 
     const transformUri = uri =>{
-        const imageUri = process.env.REACT_APP_BACKEND_URL + uri
+        const imageUri = process.env.NODE_ENV !== 'development' ? 
+                            uri
+                        :
+                            process.env.REACT_APP_BACKEND_URL + uri
         
         return imageUri
     }

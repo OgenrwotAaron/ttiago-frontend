@@ -88,9 +88,15 @@ const Article = () => {
     return ( 
         <Query query={ARTICLE_QUERY} id={id}>
             {({ data: { article} }) => {
-                const imageUrl = process.env.REACT_APP_BACKEND_URL + article.image[0].url;
+                const imageUrl = process.env.NODE_ENV !== 'development' ? 
+                                    article.image[0].url
+                                :
+                                    process.env.REACT_APP_BACKEND_URL + article.image[0].url;
                 
-                const avatarUrl = process.env.REACT_APP_BACKEND_URL + article.author.avatar.url
+                const avatarUrl = process.env.NODE_ENV !== 'development' ? 
+                                        article.author.avatar.url
+                                    :
+                                        process.env.REACT_APP_BACKEND_URL + article.author.avatar.url
                 
                 return (
                     <div>

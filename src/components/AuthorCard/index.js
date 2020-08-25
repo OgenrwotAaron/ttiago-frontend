@@ -30,7 +30,10 @@ const AuthorCard = ({user}) => {
 
     const classes = useStyles()
 
-    const imageUrl = process.env.REACT_APP_BACKEND_URL + user.avatar.url
+    const imageUrl = process.env.NODE_ENV !== 'development' ? 
+                        user.avatar.url
+                    :
+                        process.env.REACT_APP_BACKEND_URL + user.avatar.url
 
     return ( 
         <Card className={classes.card} elevation={0}>
