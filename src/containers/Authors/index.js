@@ -2,7 +2,7 @@ import React from 'react';
 import { Typography, Grid, makeStyles } from '@material-ui/core';
 import Query from '../../components/Query';
 
-import AUTHORS_QUERY from '../../queries/author/authors'
+import TEAMS_QUERY from '../../queries/team/team';
 import AuthorCard from '../../components/AuthorCard';
 
 const useStyles = makeStyles(theme=>({
@@ -17,13 +17,13 @@ const Authors = (props) => {
 
     return ( 
         <div className={classes.root}>
-            <Typography align='center' variant='h3'>Authors</Typography>
+            <Typography align='center' style={{padding:'25px', fontWeight:'300'}} color='textSecondary' variant='h3'>Our Team</Typography>
             <Grid container spacing={2}>
-                <Query query={AUTHORS_QUERY}>
-                    {({data:{authors}})=>{
-                        return authors.map(author=>(
-                            <Grid item xs={12} sm={6} md={4} key={author.email}>
-                                <AuthorCard author={author} />
+                <Query query={TEAMS_QUERY}>
+                    {({data:{users}})=>{
+                        return users.map((user,i)=>(
+                            <Grid item xs={12} sm={6} md={4} key={i}>
+                                <AuthorCard user={user} />
                             </Grid>
                         ))
                     }}

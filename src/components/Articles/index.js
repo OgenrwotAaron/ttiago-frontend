@@ -28,22 +28,26 @@ const Articles = ({articles}) => {
 
     const classes = useStyles()
 
-    const leftArticle = [...articles].reverse()[0];
-    const rightArticles = [...articles].slice(1,3);
+    const leftArticle = [articles.filter(article=>article.category.name === 'featured')].reverse()[0];
+    const rightArticles = [articles.filter(article=>article.category.name === 'featured')].reverse().slice(1,3);
 
     return (
-        <div>
-            <Typography variant='h5' className={classes.heading} component='i'> <ClearAllIcon fontSize='large'/> FEATURED</Typography>
-            <Grid container spacing={2}>
-                <Grid item sm={8} xs={12}>
-                    <Card article={leftArticle} key={`article_${leftArticle.id}`} />
-                </Grid>
-                <Grid item sm={4} xs={12}>
-                        {rightArticles.map(article => (
-                            <Card article={article} key={`article_${article.id}`} />
-                        ))}
-                </Grid>
-            </Grid>  
+        <div id='featured'>
+            {articles.filter(article=>article.category.name === 'featured').length > 0 &&
+                <>
+                    <Typography variant='h5' className={classes.heading} component='i'> <ClearAllIcon fontSize='large'/> FEATURED</Typography>
+                    <Grid container spacing={2}>
+                        <Grid item sm={8} xs={12}>
+                            <Card article={leftArticle} key={`article_${leftArticle.id}`} />
+                        </Grid>
+                        <Grid item sm={4} xs={12}>
+                                {rightArticles.map(article => (
+                                    <Card article={article} key={`article_${article.id}`} />
+                                ))}
+                        </Grid>
+                    </Grid> 
+                </>
+            } 
             <Typography variant='h5' className={classes.heading2} component='i'> <ClearAllIcon fontSize='large'/> LATEST ARTICLES</Typography>
             <LatestArticles articles={articles}/>
             <Parties article={articles.filter(article=>article.category.name==='Parties').reverse()[0]} />

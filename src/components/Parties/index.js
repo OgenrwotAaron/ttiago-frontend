@@ -43,6 +43,10 @@ const Parties = ({article={}}) => {
                     :
                         process.env.REACT_APP_BACKEND_URL + article.image[0].url
 
+    if(Object.keys(article).length<0){
+        return null;
+    }
+
     return ( 
         <div className={classes.root}>
             <Grid container spacing={2}>

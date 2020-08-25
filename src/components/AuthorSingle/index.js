@@ -34,7 +34,6 @@ const useStyles = makeStyles(theme=>({
 }))
 
 const AuthorSingle = ({author}) => {
-    console.log(author)
     const classes = useStyles()
 
     const coverImage = process.env.REACT_APP_BACKEND_URL + author.biography.cover_image.url

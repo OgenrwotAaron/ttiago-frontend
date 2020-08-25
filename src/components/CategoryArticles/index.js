@@ -18,7 +18,7 @@ const CategoryArticles = ({articles}) => {
         <Grid className={classes.root} container spacing={2}>
             {
                 articles.map(article=>(
-                    <Grid item xs={12} sm={6} key={article.id}>
+                    <Grid item xs={12} md={4} sm={6} key={article.id}>
                         <CategoryCard article={article} />
                     </Grid>
                 ))

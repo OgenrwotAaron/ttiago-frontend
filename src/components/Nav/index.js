@@ -2,9 +2,13 @@ import React from 'react';
 import Query from '../Query'
 import { Link, useLocation } from 'react-router-dom';
 import { Toolbar, Button, ButtonGroup, IconButton, Hidden, makeStyles, Typography, fade, Divider } from '@material-ui/core'
+
 import FacebookIcon from '@material-ui/icons/Facebook';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import InstagramIcon from '@material-ui/icons/Instagram';
+import HomeIcon from '@material-ui/icons/Home'
+import ArrowDropDownCircleIcon from '@material-ui/icons/KeyboardArrowDown'
+
 import ReactMoment from 'react-moment'
 import TypeWriter from 'typewriter-effect'
 
@@ -74,7 +78,8 @@ const useStyles = makeStyles(theme=>({
         backgroundSize:'cover',
         backgroundRepeat:'no-repeat',
         margin:theme.spacing(0,-1),
-        backgroundPosition:'center'
+        backgroundPosition:'center',
+        backgroundAttachment:'fixed'
     },
     overlay:{
         backgroundColor:'#00000069',
@@ -92,6 +97,19 @@ const useStyles = makeStyles(theme=>({
         borderRadius:'25px 0 0 25px',
         marginRight:5
     },
+    homeIcon:{
+        margin:theme.spacing(0,1,0,0),
+        color:'whitesmoke'
+    },
+    more:{
+        position:'absolute',
+        bottom:10,
+        right:'50%'
+    },
+    moreIcon:{
+        fontSize:72,
+        color:'whitesmoke',
+    }
 }))
 
 const Nav = () =>{
@@ -114,13 +132,43 @@ const Nav = () =>{
                     </Typography>
                 </Hidden>
                 <ButtonGroup variant='text'>
-                    <Button style={{color:'#5ba124'}} href='/authors'>Editors</Button>
+                    <Button style={{color:'#5ba124'}} href='/team'>Our Team</Button>
                     <Button style={{color:'#5ba124'}} href='/about' >About</Button>
                     <Button style={{color:'#5ba124'}} href='#subscribe' >Subscribe</Button>
                     <Button style={{color:'#5ba124'}} href='/contact' >Contact</Button>
+                    <Button style={{color:'#5ba124'}} href='/write' >Write for us</Button>
                 </ButtonGroup>
             </Toolbar>
             <Divider/>
+            {
+                pathname !== '/' && 
+                <Query query={CATEGORIES_QUERY} id={null}>
+                    {({ data: { categories } }) => {
+                        return (
+                            <div>
+                                <Toolbar component="nav" variant="dense" className={classes.toolbarSecondary}>
+                                    <Link to='/'>
+                                        <HomeIcon style={{color:'#0000008a'}} className={classes.homeIcon}/>
+                                    </Link>
+                                    <Link to='/news'>
+                                        <Typography color='textSecondary'>News</Typography>
+                                    </Link>
+                                    {categories.map(category=>(
+                                        <Link 
+                                            key={category.id}
+                                            to={`/category/${category.id}`}
+                                            variant='body2'
+                                            className={classes.link}
+                                        >
+                                            <Typography color='textSecondary'>{category.name}</Typography>
+                                        </Link>
+                                    ))}
+                                </Toolbar>
+                            </div>
+                        )
+                    }}
+                </Query>
+            }
             {pathname === '/' && <Query query={COVER_QUERY}>
                 {({data:{covers}}) => {
                     const imageUrl = process.env.REACT_APP_BACKEND_URL + covers[covers.length-1].image.url
@@ -132,6 +180,9 @@ const Nav = () =>{
                                             return (
                                                 <div>
                                                     <Toolbar component="nav" variant="dense" className={classes.toolbarSecondary}>
+                                                        <Link to='/'>
+                                                            <HomeIcon className={classes.homeIcon}/>
+                                                        </Link>
                                                         <Link to='/news'>
                                                             <Typography style={{color:'whitesmoke'}}>News</Typography>
                                                         </Link>
@@ -166,6 +217,9 @@ const Nav = () =>{
                                                     </div>
                                         }}
                                     </Query>
+                                    <IconButton href='#featured' className={classes.more}>
+                                        <ArrowDropDownCircleIcon className={classes.moreIcon} color='primary'/>
+                                    </IconButton>
                                 </div>
                         </div>
                 }}
