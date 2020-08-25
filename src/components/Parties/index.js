@@ -82,9 +82,6 @@ const Parties = ({article={}}) => {
                                 <Typography style={{fontWeight:'bold',color:'#f0f3bdd9'}}>
                                     By {article.author.user_name}
                                 </Typography>
-                                <Typography style={{fontWeight:'bold',color:'#f0f3bdd9'}}>
-                                    Fee: 30K
-                                </Typography>
                             </Link>
                         </div>
                     </Grid>
