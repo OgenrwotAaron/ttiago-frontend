@@ -5,7 +5,7 @@ import { Toolbar, Button, ButtonGroup, IconButton, Hidden, makeStyles, Typograph
 
 import FacebookIcon from '@material-ui/icons/Facebook';
 import TwitterIcon from '@material-ui/icons/Twitter';
-import InstagramIcon from '@material-ui/icons/Instagram';
+import YouTubeIcon from '@material-ui/icons/YouTube';
 import HomeIcon from '@material-ui/icons/Home'
 import ArrowDropDownCircleIcon from '@material-ui/icons/KeyboardArrowDown'
 
@@ -123,9 +123,9 @@ const Nav = () =>{
             <Toolbar className={classes.topNav} component='nav' variant='dense'>
                 <Hidden xsDown>
                     <div>
-                        <IconButton aria-label='facebook-link'><FacebookIcon style={{color:'#5ba124'}}/></IconButton>
-                        <IconButton aria-label='twitter-link'><TwitterIcon style={{color:'#5ba124'}}/></IconButton>
-                        <IconButton aria-label='instagram-link'><InstagramIcon style={{color:'#5ba124'}}/></IconButton>
+                        <IconButton  href='https://www.facebook.com/NILE-Trumpet-Magazine-113588513748029' target='_blank' aria-label='facebook-link'><FacebookIcon style={{color:'#5ba124'}}/></IconButton>
+                        <IconButton  href='https://twitter.com/niletrumpetmag?s=08' target='_blank' aria-label='twitter-link'><TwitterIcon style={{color:'#5ba124'}}/></IconButton>
+                        <IconButton  href='https://youtu.be/ZSndiJccngs' target='_blank' aria-label='youtube-link'><YouTubeIcon style={{color:'#5ba124'}}/></IconButton>
                     </div>
                     <Typography style={{color:'#5ba124'}}>
                         <ReactMoment format='Do | MMM | YYYY'>{new Date()}</ReactMoment>

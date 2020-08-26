@@ -19,7 +19,7 @@ const useStyles = makeStyles(theme=>({
         backgroundSize:'cover'
     },
     heroDrop:{
-        backgroundColor:'#00000025',
+        backgroundColor:'#00000050',
         width:'100%',
         height:'100%',
         display:'flex',
