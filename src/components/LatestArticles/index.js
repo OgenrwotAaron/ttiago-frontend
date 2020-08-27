@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, makeStyles, Typography, Card, CardActionArea, CardMedia } from '@material-ui/core';
+import { Grid, makeStyles, Typography, Card, CardActionArea, CardMedia, Divider } from '@material-ui/core';
 import LatestCard from '../LatestCard';
 import Slick from 'react-slick';
 import Moment from 'react-moment';
@@ -14,6 +14,11 @@ const useStyles = makeStyles(theme=>({
         padding:theme.spacing(1),
         background:'linear-gradient(0deg, #000000b8, transparent)',
         width:'100%'
+    },
+    divider:{
+        margin:theme.spacing(2,0),
+        height:5,
+        backgroundColor:'#5ba124'
     }
 }))
 
@@ -34,6 +39,7 @@ const LatestArticles = ({articles}) => {
 
     return ( 
         <div className={classes.root}>
+            <Divider className={classes.divider}/>
             <Grid container spacing={1}>
                 <Grid item xs={12} sm={9} md={8}>
                     {reversedArticles.slice(0,3).map(article=>(
@@ -75,6 +81,7 @@ const LatestArticles = ({articles}) => {
                     </Slick>
                 </Grid>
             </Grid>
+            <Divider className={classes.divider}/>
         </div>
      );
 }

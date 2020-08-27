@@ -1,7 +1,7 @@
-import React from 'react';
+import React,{ useState } from 'react';
 import Query from '../Query'
 import { Link, useLocation } from 'react-router-dom';
-import { Toolbar, Button, ButtonGroup, IconButton, Hidden, makeStyles, Typography, fade, Divider } from '@material-ui/core'
+import { Toolbar, Button, ButtonGroup, IconButton, Hidden, makeStyles, Typography, fade, Divider, Dialog, DialogTitle } from '@material-ui/core'
 
 import FacebookIcon from '@material-ui/icons/Facebook';
 import TwitterIcon from '@material-ui/icons/Twitter';
@@ -109,6 +109,45 @@ const useStyles = makeStyles(theme=>({
     moreIcon:{
         fontSize:72,
         color:'whitesmoke',
+    },
+    advertise:{
+        position:'fixed',
+        zIndex:'99',
+        right:15,
+        bottom:'50%',
+        backgroundColor:'#5ba124',
+        color:'#ffffff',
+        padding:theme.spacing(0.5,1),
+        transform:'rotate(-90deg)',
+        transformOrigin:'right',
+        cursor:'pointer'
+    },
+    details:{
+        padding:theme.spacing(0,2,2,2)
+    },
+    homeButton:{
+        padding:theme.spacing(1,0,1,1.5),
+        marginRight:theme.spacing(1),
+        backgroundColor:'#5ba124',
+        display:'flex',
+        justifyContent:'center',
+        alignItems:'center',
+        borderRadius:'25px 0 0 25px',
+    },
+    homeButton1:{
+        padding:theme.spacing(1,0,1,1.5),
+        marginRight:theme.spacing(1),
+        backgroundColor:'white',
+        display:'flex',
+        justifyContent:'center',
+        alignItems:'center',
+        borderRadius:'25px 0 0 25px',
+    },
+    ads:{
+        height:'30vh',
+        backgroundColor:'gray',
+        width:'50%',
+        float:'right'
     }
 }))
 
@@ -116,16 +155,26 @@ const Nav = () =>{
 
     const classes = useStyles()
 
+    const [open, setOpen] = useState(false);
+
     const { pathname } = useLocation()
 
+    const handleAdvertise = event =>{
+        setOpen(true)
+    }
+    
+    const handleClose = () =>{
+        setOpen(false)
+    }
+        
     return (
         <div>
             <Toolbar className={classes.topNav} component='nav' variant='dense'>
                 <Hidden xsDown>
                     <div>
-                        <IconButton  href='https://www.facebook.com/NILE-Trumpet-Magazine-113588513748029' target='_blank' aria-label='facebook-link'><FacebookIcon style={{color:'#5ba124'}}/></IconButton>
-                        <IconButton  href='https://twitter.com/niletrumpetmag?s=08' target='_blank' aria-label='twitter-link'><TwitterIcon style={{color:'#5ba124'}}/></IconButton>
-                        <IconButton  href='https://youtu.be/ZSndiJccngs' target='_blank' aria-label='youtube-link'><YouTubeIcon style={{color:'#5ba124'}}/></IconButton>
+                        <IconButton  href='https://www.facebook.com/NILE-Trumpet-Magazine-113588513748029' target='_blank' aria-label='facebook-link'><FacebookIcon style={{color:'#3b5998 '}}/></IconButton>
+                        <IconButton  href='https://twitter.com/niletrumpetmag?s=08' target='_blank' aria-label='twitter-link'><TwitterIcon style={{color:'#00acee'}}/></IconButton>
+                        <IconButton  href='https://youtu.be/ZSndiJccngs' target='_blank' aria-label='youtube-link'><YouTubeIcon style={{color:'red'}}/></IconButton>
                     </div>
                     <Typography style={{color:'#5ba124'}}>
                         <ReactMoment format='Do | MMM | YYYY'>{new Date()}</ReactMoment>
@@ -148,7 +197,9 @@ const Nav = () =>{
                             <div>
                                 <Toolbar component="nav" variant="dense" className={classes.toolbarSecondary}>
                                     <Link to='/'>
-                                        <HomeIcon style={{color:'#0000008a'}} className={classes.homeIcon}/>
+                                        <div className={classes.homeButton}>
+                                            <HomeIcon style={{color:'white'}} className={classes.homeIcon}/>
+                                        </div>
                                     </Link>
                                     <Link to='/news'>
                                         <Typography color='textSecondary'>News</Typography>
@@ -184,7 +235,9 @@ const Nav = () =>{
                                                 <div>
                                                     <Toolbar component="nav" variant="dense" className={classes.toolbarSecondary}>
                                                         <Link to='/'>
-                                                            <HomeIcon className={classes.homeIcon}/>
+                                                            <div className={classes.homeButton1}>
+                                                                <HomeIcon style={{color:'#5ba124'}} className={classes.homeIcon}/>
+                                                            </div>
                                                         </Link>
                                                         <Link to='/news'>
                                                             <Typography style={{color:'whitesmoke'}}>News</Typography>
@@ -223,10 +276,22 @@ const Nav = () =>{
                                     <IconButton href='#featured' className={classes.more}>
                                         <ArrowDropDownCircleIcon className={classes.moreIcon} color='primary'/>
                                     </IconButton>
+                                    <div className={classes.ads}>
+                                        <Typography align='center' color='textSecondary'>Ads</Typography>
+                                    </div>
                                 </div>
                         </div>
                 }}
             </Query>}
+            <div onClick={handleAdvertise} className={classes.advertise}>
+                <Typography variant='body2'>Advertise with Us</Typography>
+            </div>
+            <Dialog onClose={handleClose} open={open}>
+                <DialogTitle style={{fontSize:'14px'}}>Advertise with us</DialogTitle>
+                <Typography className={classes.details}>
+                    Let's help your business brand reach corners in the north and wide. Contact <a href='tel:+256789038145'>0789038145</a> Today and book advertising slots on our magazine.
+                </Typography>
+            </Dialog>
         </div>
     )
 }

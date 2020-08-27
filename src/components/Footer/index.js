@@ -46,6 +46,15 @@ const useStyles = makeStyles(theme=>({
         alignItems:'center',
         padding:theme.spacing(2),
         backgroundColor:'#5ba124'
+    },
+    ads:{
+        height:'15vh',
+        backgroundColor:'white',
+        padding:theme.spacing(2,0)
+    },
+    adContent:{
+        backgroundColor:'grey',
+        height:'100%'
     }
 }))
 
@@ -94,6 +103,11 @@ const Footer = () => {
                     </Grid>
                 </Grid> */}
             </div>
+            <div className={classes.ads}>
+                <div className={classes.adContent}>
+                    <Typography align='center' color='textSecondary'>Ads</Typography>
+                </div>
+            </div>
             <Grid container spacing={2} className={classes.details}>
                 <Grid item sm={4}>
                     <Typography style={{fontWeight:'bold'}} component='b'>NILE TRUMPET</Typography>
@@ -140,26 +154,21 @@ const Footer = () => {
                         <PhoneIcon/>
                     </IconButton>
                     <IconButton href='mailto:niletrumpetmagazine@gmail.com' >
-                        <EmailIcon/>
+                        <EmailIcon style={{color:'#D44638'}}/>
                     </IconButton>
                     <IconButton href='https://www.facebook.com/NILE-Trumpet-Magazine-113588513748029' target='_blank'>
-                        <FacebookIcon/>
+                        <FacebookIcon style={{color:'#3b5998 '}}/>
                     </IconButton>
                     <IconButton href='https://twitter.com/niletrumpetmag?s=08' target='_blank'>
-                        <TwitterIcon/>
+                        <TwitterIcon style={{color:'#00acee'}}/>
                     </IconButton>
                     <IconButton href='https://youtu.be/ZSndiJccngs' target='_blank'>
-                        <YouTubeIcon/>
+                        <YouTubeIcon style={{color:'red'}}/>
                     </IconButton>
                     <IconButton href='whatsapp:+256703229038'>
-                        <WhatsAppIcon/>
+                        <WhatsAppIcon style={{color:'#25D366'}}/>
                     </IconButton>
                     </div>
-                    <img
-                        alt='contact'
-                        src='/images/contact.svg'
-                        width='100%'
-                    />
                 </Grid>
             </Grid>
             <div className={classes.copy}>

@@ -10,6 +10,9 @@ const CATEGORY_QUERY = gql`
                 content
                 author {
                     user_name
+                    avatar {
+                        url
+                    }
                 }
                 image {
                     url
