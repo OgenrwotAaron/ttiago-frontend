@@ -1,13 +1,14 @@
 import React,{ useState } from 'react';
 import Query from '../Query'
 import { Link, useLocation } from 'react-router-dom';
-import { Toolbar, Button, ButtonGroup, IconButton, Hidden, makeStyles, Typography, fade, Divider, Dialog, DialogTitle } from '@material-ui/core'
+import { Toolbar, Button, ButtonGroup, IconButton, Hidden, makeStyles, Typography, fade, Divider, Dialog, DialogTitle, Menu, MenuItem } from '@material-ui/core'
 
 import FacebookIcon from '@material-ui/icons/Facebook';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import YouTubeIcon from '@material-ui/icons/YouTube';
 import HomeIcon from '@material-ui/icons/Home'
 import ArrowDropDownCircleIcon from '@material-ui/icons/KeyboardArrowDown'
+import MenuIcon from '@material-ui/icons/Menu';
 
 import ReactMoment from 'react-moment'
 import TypeWriter from 'typewriter-effect'
@@ -144,10 +145,15 @@ const useStyles = makeStyles(theme=>({
         borderRadius:'25px 0 0 25px',
     },
     ads:{
-        height:'30vh',
+        height:'5vh',
         backgroundColor:'gray',
-        width:'50%',
-        float:'right'
+        margin:theme.spacing(1,0)
+    },
+    header:{
+        display:'flex',
+        justifyContent:'space-between',
+        alignItems:'center',
+        width:'100%'
     }
 }))
 
@@ -156,6 +162,7 @@ const Nav = () =>{
     const classes = useStyles()
 
     const [open, setOpen] = useState(false);
+    const [anchorElement, setAnchorElement] = useState();
 
     const { pathname } = useLocation()
 
@@ -166,9 +173,26 @@ const Nav = () =>{
     const handleClose = () =>{
         setOpen(false)
     }
+
+    const openMenu = event =>{
+        setAnchorElement(event.currentTarget)
+    }
+
+    const closeMenu = event =>{
+        setAnchorElement()
+    }
         
     return (
         <div>
+            <div>
+                <div className={classes.ads}>
+                    <Typography align='center' color='textSecondary'>Ads</Typography>
+                </div> 
+                <div className={classes.ads}>
+                    <Typography align='center' color='textSecondary'>Ads</Typography>
+                </div>  
+            </div>
+            
             <Toolbar className={classes.topNav} component='nav' variant='dense'>
                 <Hidden xsDown>
                     <div>
@@ -180,13 +204,55 @@ const Nav = () =>{
                         <ReactMoment format='Do | MMM | YYYY'>{new Date()}</ReactMoment>
                     </Typography>
                 </Hidden>
-                <ButtonGroup variant='text'>
-                    <Button style={{color:'#5ba124'}} href='/team'>Our Team</Button>
-                    <Button style={{color:'#5ba124'}} href='/about' >About</Button>
-                    <Button style={{color:'#5ba124'}} href='#subscribe' >Subscribe</Button>
-                    <Button style={{color:'#5ba124'}} href='/contact' >Contact</Button>
-                    <Button style={{color:'#5ba124'}} href='/write' >Write for us</Button>
-                </ButtonGroup>
+                <Hidden xsDown>
+                    <ButtonGroup variant='text'>
+                        <Button style={{color:'#5ba124'}} href='/team'>Our Team</Button>
+                        <Button style={{color:'#5ba124'}} href='/about' >About</Button>
+                        <Button style={{color:'#5ba124'}} href='#subscribe' >Subscribe</Button>
+                        <Button style={{color:'#5ba124'}} href='/contact' >Contact</Button>
+                        <Button style={{color:'#5ba124'}} href='/write' >Write for us</Button>
+                    </ButtonGroup>
+                </Hidden>
+                <Hidden smUp>
+                    <div className={classes.header}>
+                        <IconButton onClick={openMenu}>
+                            <MenuIcon/>
+                        </IconButton>
+                        <Link to='/'>
+                            <img
+                                src='/favicon.ico'
+                                alt='logo'
+                                style={{width:'40px'}}
+                            />
+                        </Link>
+                        <Typography style={{color:'#5ba124'}}>
+                            <ReactMoment format='Do | MMM | YYYY'>{new Date()}</ReactMoment>
+                        </Typography>
+                    </div>
+                </Hidden>
+                <Menu
+                    anchorEl={anchorElement}
+                    keepMounted
+                    open={Boolean(anchorElement)}
+                    onClose={closeMenu}
+                    style={{top:'55px'}}
+                >
+                    <MenuItem onClick={handleClose} >
+                        <Button style={{color:'#5ba124'}} href='/team'>Our Team</Button>
+                    </MenuItem>
+                    <MenuItem onClick={handleClose} >
+                        <Button style={{color:'#5ba124'}} href='/about' >About</Button>
+                    </MenuItem>
+                    <MenuItem onClick={handleClose} >
+                        <Button style={{color:'#5ba124'}} href='#subscribe' >Subscribe</Button>
+                    </MenuItem>
+                    <MenuItem onClick={handleClose} >
+                        <Button style={{color:'#5ba124'}} href='/contact' >Contact</Button>
+                    </MenuItem>
+                    <MenuItem onClick={handleClose} >
+                        <Button style={{color:'#5ba124'}} href='/write' >Write for us</Button>
+                    </MenuItem>
+                </Menu>
             </Toolbar>
             <Divider/>
             {
@@ -276,9 +342,6 @@ const Nav = () =>{
                                     <IconButton href='#featured' className={classes.more}>
                                         <ArrowDropDownCircleIcon className={classes.moreIcon} color='primary'/>
                                     </IconButton>
-                                    <div className={classes.ads}>
-                                        <Typography align='center' color='textSecondary'>Ads</Typography>
-                                    </div>
                                 </div>
                         </div>
                 }}
