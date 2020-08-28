@@ -95,31 +95,31 @@ const Contact = props => {
                         </div>
                         <div>
                             <IconButton href='mailto:niletrumpetmagazine@gmail.com' >
-                                <EmailIcon/>
+                                <EmailIcon style={{color:'#D44638'}}/>
                             </IconButton>
                             <Typography component='span' color='textSecondary' > niletrumpetmagazine@gmail.com</Typography>
                         </div>
                         <div>
                             <IconButton href='https://www.facebook.com/NILE-Trumpet-Magazine-113588513748029' target='_blank'>
-                                <FacebookIcon/>
+                                <FacebookIcon style={{color:'#3b5998 '}}/>
                             </IconButton>
                             <Typography component='span' color='textSecondary' > NILE Trumpet Magazine</Typography>
                         </div>
                         <div>
                             <IconButton  href='https://twitter.com/niletrumpetmag?s=08' target='_blank'>
-                                <TwitterIcon/>
+                                <TwitterIcon style={{color:'#00acee'}}/>
                             </IconButton>
                             <Typography component='span' color='textSecondary' > @niletrumpetmag</Typography>
                         </div>
                         <div>
                             <IconButton href='https://youtu.be/ZSndiJccngs' target='_blank'>
-                                <YoutubeIcon/>
+                                <YoutubeIcon style={{color:'red'}}/>
                             </IconButton>
                             <Typography component='span' color='textSecondary' > NILE Trumpet MAgazine</Typography>
                         </div>
                         <div>
-                            <IconButton href='whatsapp:+256703229038'>
-                                <WhatsAppIcon/>
+                            <IconButton href="intent://send/+256703229038#Intent;scheme=smsto;package=com.whatsapp;action=android.intent.action.SENDTO;end">
+                                <WhatsAppIcon style={{color:'#25D366'}}/>
                             </IconButton>
                             <Typography component='span' color='textSecondary' > +256703229038</Typography>
                         </div>

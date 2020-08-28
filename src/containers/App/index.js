@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { Switch, Route } from 'react-router-dom'
+import axios from 'axios'
 
 import Nav from '../../components/Nav';
 import Articles from '../Articles';
@@ -15,9 +16,19 @@ import User from '../User';
 import Write from '../../components/Write/write';
 
 const App = () =>{
+
+    const [ads, setAds] = useState([]);
+
+    useEffect(() => {
+        axios.get(`${process.env.REACT_APP_BACKEND_URL}/advertisements`)
+        .then(res=>{
+            setAds(res.data)
+        })
+    }, []);
+
     return (
         <div className='App'>
-            <Nav/>
+            <Nav ads={ads}/>
             <Switch>
                 <Route path='/' exact component={Articles} />
                 <Route path='/article/:id' exact component={Article} />
@@ -29,7 +40,7 @@ const App = () =>{
                 <Route path='/user/:id' exact component={User} />
                 <Route path='/write' exact component={Write} />
             </Switch>
-            <Footer/>
+            <Footer ads={ads}/>
         </div>
     )
 }

@@ -100,7 +100,6 @@ const Write = (props) => {
                             </ListItem>
                         ))
                     }
-                    
                 </List>
                 <br/>
                 <Typography variant='h5' style={{fontWeight:'300'}}>SUBMISSION GUIDELINES:</Typography>
@@ -113,6 +112,11 @@ const Write = (props) => {
                             </li>
                         ))
                     }
+                    <li>
+                        <Typography color='textSecondary'>
+                            Also attach a headshot picture (directly from a camera or cell phone—not from Facebook).Attach ALL 3 ITEMS to an email and send to <a href='mailto:ntrumpeteditorial@gmail.com'>ntrumpeteditorial@gmail.com</a>:-<br/> - MANUSCRIPT (word.doc) <br/> - BIO (word.doc) <br/> - HEADSHOT Submitting to Editorial indicates full agreement with all terms and conditions of publication.
+                        </Typography>
+                    </li>
                 </ol>
             </div>
         </div>

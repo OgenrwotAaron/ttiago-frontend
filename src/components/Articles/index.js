@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme=>({
     },
 }))
 
-const Articles = ({articles}) => {
+const Articles = ({articles, ads}) => {
 
     const classes = useStyles()
 
@@ -49,7 +49,7 @@ const Articles = ({articles}) => {
                 </>
             } 
             <Typography variant='h5' className={classes.heading2} component='i'> <ClearAllIcon fontSize='large'/> LATEST ARTICLES</Typography>
-            <LatestArticles articles={articles}/>
+            <LatestArticles ads={ads} articles={articles}/>
             <Parties article={articles.filter(article=>article.category.name==='Parties').reverse()[0]} />
             <NewSlider articles={articles}/>
         </div>

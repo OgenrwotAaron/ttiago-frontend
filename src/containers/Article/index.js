@@ -75,9 +75,20 @@ const Article = () => {
         return imageUrl;
     }
 
-    const articleImage = props =>(
-        <img {...props} alt={props.alt} style={{maxWidth:'100%'}} />
-    )
+    const articleImage = props =>{
+        if(props.alt.split('.')[1] === 'jpg' || props.alt.split('.')[1] === 'png' || props.alt.split('.')[1] === 'gif' || props.alt.split('.')[1] === 'svg' || props.alt.split('.')[1] === 'ico'){
+            return (
+                <img {...props} alt={props.alt} style={{maxWidth:'100%'}} />
+            )
+        }else{
+            return (
+                <video width='100%' controls>
+                    <source src={props.src}/>
+                </video>
+            )
+        }
+        
+    }
 
     const articleText = props =>(
         <Typography color='textSecondary' component='span'>
@@ -129,11 +140,6 @@ const Article = () => {
                                 <Typography color='textSecondary' variant='caption'>
                                     <Moment format='MMM Do YYYY' >{article.published_at}</Moment>
                                 </Typography>
-                                <div className={classes.icons}>
-                                    <IconButton aria-label='facebook-link'><FacebookIcon fontSize='small' color='primary'/></IconButton>
-                                    <IconButton aria-label='twitter-link'><TwitterIcon fontSize='small' color='primary'/></IconButton>
-                                    <IconButton aria-label='instagram-link'><InstagramIcon fontSize='small' color='primary'/></IconButton>
-                                </div>
                             </div>
                         </div>
                         <div className={classes.related}>

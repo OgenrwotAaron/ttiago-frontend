@@ -157,9 +157,11 @@ const useStyles = makeStyles(theme=>({
     }
 }))
 
-const Nav = () =>{
+const Nav = props =>{
 
     const classes = useStyles()
+
+    const { ads } = props
 
     const [open, setOpen] = useState(false);
     const [anchorElement, setAnchorElement] = useState();
@@ -186,10 +188,36 @@ const Nav = () =>{
         <div>
             <div>
                 <div className={classes.ads}>
-                    <Typography align='center' color='textSecondary'>Ads</Typography>
+                    {
+                        ads.filter(ad=>ad.position === 'top1').map(ad=>(
+                            <a key={ad.id} href={ad.url === null ? "/":`${ad.url}`}>
+                                <div
+                                    key={ad.id}
+                                    style={{
+                                        backgroundImage:`url(${ad.adImage.url})`,
+                                        height:'100%',
+                                        backgroundSize:'contain'
+                                    }}
+                                />
+                            </a>
+                        ))
+                    }
                 </div> 
                 <div className={classes.ads}>
-                    <Typography align='center' color='textSecondary'>Ads</Typography>
+                    {
+                        ads.filter(ad=>ad.position === 'top2').map(ad=>(
+                            <a key={ad.id} href={ad.url === null ? "/":`${ad.url}`}>
+                                <div
+                                    key={ad.id}
+                                    style={{
+                                        backgroundImage:`url(${ad.adImage.url})`,
+                                        height:'100%',
+                                        backgroundSize:'contain'
+                                    }}
+                                />
+                            </a>
+                        ))
+                    }
                 </div>  
             </div>
             
@@ -208,7 +236,7 @@ const Nav = () =>{
                     <ButtonGroup variant='text'>
                         <Button style={{color:'#5ba124'}} href='/team'>Our Team</Button>
                         <Button style={{color:'#5ba124'}} href='/about' >About</Button>
-                        <Button style={{color:'#5ba124'}} href='#subscribe' >Subscribe</Button>
+                        {/* <Button style={{color:'#5ba124'}} href='#subscribe' >Subscribe</Button> */}
                         <Button style={{color:'#5ba124'}} href='/contact' >Contact</Button>
                         <Button style={{color:'#5ba124'}} href='/write' >Write for us</Button>
                     </ButtonGroup>
@@ -243,9 +271,9 @@ const Nav = () =>{
                     <MenuItem onClick={handleClose} >
                         <Button style={{color:'#5ba124'}} href='/about' >About</Button>
                     </MenuItem>
-                    <MenuItem onClick={handleClose} >
+                    {/* <MenuItem onClick={handleClose} >
                         <Button style={{color:'#5ba124'}} href='#subscribe' >Subscribe</Button>
-                    </MenuItem>
+                    </MenuItem> */}
                     <MenuItem onClick={handleClose} >
                         <Button style={{color:'#5ba124'}} href='/contact' >Contact</Button>
                     </MenuItem>

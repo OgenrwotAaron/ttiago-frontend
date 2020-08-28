@@ -2,7 +2,6 @@ import React from 'react';
 import { Grid, makeStyles, Typography, Card, CardActionArea, CardMedia, Divider } from '@material-ui/core';
 import LatestCard from '../LatestCard';
 import Slick from 'react-slick';
-import Moment from 'react-moment';
 
 const useStyles = makeStyles(theme=>({
     cards:{
@@ -22,7 +21,7 @@ const useStyles = makeStyles(theme=>({
     }
 }))
 
-const LatestArticles = ({articles}) => {
+const LatestArticles = ({articles, ads }) => {
 
     const classes = useStyles()
 
@@ -52,26 +51,22 @@ const LatestArticles = ({articles}) => {
                 <Grid item xs={12} sm={3} md={4}>
                     <Typography variant='h6' component='b'>Advertisement</Typography>
                     <Slick {...settings} >
-                        {articles.map(article=>{
+                        {ads.map(ad=>{
 
                             const imageUrl = process.env.NODE_ENV !== 'development' ? 
-                                                article.image[0].url
+                                                ad.adImage.url
                                             :
-                                                process.env.REACT_APP_BACKEND_URL + article.image[0].url
-
+                                                process.env.REACT_APP_BACKEND_URL + ad.adImage.url
                             return (
-                                <Card key={article.id}>
-                                    <CardActionArea>
+                                <Card key={ad.id}>
+                                    <CardActionArea href={ad.url === 'null' ? '/':ad.url}>
                                         <CardMedia
                                             image={imageUrl}
                                             component='img'
                                         />
                                         <div className={classes.title}>
-                                            <Typography style={{color:'white'}} variant='h6' component='b'>
-                                                {article.title} |&nbsp;
-                                            </Typography>
                                             <Typography variant='caption' style={{color:'white'}} >
-                                                <Moment format='DD MMM YYYY'>{article.published_at}</Moment>
+                                                {ad.company}
                                             </Typography>
                                         </div>
                                     </CardActionArea>

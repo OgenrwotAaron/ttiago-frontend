@@ -58,9 +58,12 @@ const useStyles = makeStyles(theme=>({
     }
 }))
 
-const Footer = () => {
+const Footer = props => {
 
     const classes = useStyles()
+    const { ads } = props
+
+    console.log(ads)
 
     //const [subscribe, setSubscribe] = useState('');
 
@@ -105,17 +108,31 @@ const Footer = () => {
             </div>
             <div className={classes.ads}>
                 <div className={classes.adContent}>
-                    <Typography align='center' color='textSecondary'>Ads</Typography>
+                    {
+                        ads.filter(ad=>ad.position === 'bottom').map(ad=>(
+                            <a key={ad.id} href={ad.url === null ? "/":`${ad.url}`}>
+                                <div
+                                    style={{
+                                        backgroundImage:`url(${ad.adImage.url})`,
+                                        height:'100%',
+                                        backgroundSize:'contain'
+                                    }}
+                                />
+                            </a>
+                        ))
+                    }
                 </div>
             </div>
             <Grid container spacing={2} className={classes.details}>
                 <Grid item sm={4}>
                     <Typography style={{fontWeight:'bold'}} component='b'>NILE TRUMPET</Typography>
-                    <img
-                        src='/favicon.ico'
-                        alt='footer'
-                        style={{width:'80%'}}
-                    />
+                    <Link to='/'>
+                        <img
+                            src='/favicon.ico'
+                            alt='footer'
+                            style={{width:'80%'}}
+                        />
+                    </Link>
                 </Grid>
                 <Grid item sm={5}>
                     <Typography style={{fontWeight:'bold'}} component='b'>PAGES</Typography>
@@ -130,11 +147,11 @@ const Footer = () => {
                                 <ListItemText primaryTypographyProps={{color:'textSecondary'}} primary='About' />
                             </Link>
                         </ListItem>
-                        <ListItem button>
+                        {/* <ListItem button>
                             <Link to='#subscribe'>
                                 <ListItemText primaryTypographyProps={{color:'textSecondary'}} primary='Subscribe' />
                             </Link>
-                        </ListItem>
+                        </ListItem> */}
                         <ListItem button>
                             <Link to='/contact'>
                                 <ListItemText primaryTypographyProps={{color:'textSecondary'}} primary='Contact' />
@@ -162,10 +179,10 @@ const Footer = () => {
                     <IconButton href='https://twitter.com/niletrumpetmag?s=08' target='_blank'>
                         <TwitterIcon style={{color:'#00acee'}}/>
                     </IconButton>
-                    <IconButton href='https://youtu.be/ZSndiJccngs' target='_blank'>
+                    <IconButton href='https://www.youtube.com/channel/UCn64UEDFUq5m3IPfvVsppsA' target='_blank'>
                         <YouTubeIcon style={{color:'red'}}/>
                     </IconButton>
-                    <IconButton href='whatsapp:+256703229038'>
+                    <IconButton href="intent://send/+256703229038#Intent;scheme=smsto;package=com.whatsapp;action=android.intent.action.SENDTO;end">
                         <WhatsAppIcon style={{color:'#25D366'}}/>
                     </IconButton>
                     </div>
