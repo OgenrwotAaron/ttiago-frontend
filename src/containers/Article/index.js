@@ -3,14 +3,15 @@ import { useParams } from 'react-router-dom';
 import Query from '../../components/Query';
 import ReactMarkdown from 'react-markdown';
 import Moment from 'react-moment';
+import { FacebookShareButton, TwitterShareButton, WhatsappShareButton } from 'react-share'
 
 import FacebookIcon from '@material-ui/icons/Facebook';
 import TwitterIcon from '@material-ui/icons/Twitter';
-import InstagramIcon from '@material-ui/icons/Instagram';
+import WhatsAppIcon from '@material-ui/icons/WhatsApp';
 
 import ARTICLE_QUERY from '../../queries/article/article';
 import CATEGORY_QUERY from '../../queries/category/articles'
-import { makeStyles, Typography, IconButton, Avatar, Grid } from '@material-ui/core';
+import { makeStyles, Typography, Avatar, Grid } from '@material-ui/core';
 import CategoryCard from '../../components/CategoryCard';
 
 const useStyles = makeStyles(theme=>({
@@ -61,7 +62,7 @@ const useStyles = makeStyles(theme=>({
     }
 }))
 
-const Article = () => {
+const Article = props => {
 
     const classes = useStyles();
 
@@ -128,9 +129,25 @@ const Article = () => {
                             />
                             <Typography className={classes.share} color='textSecondary' align='center'>Share this Article</Typography>
                             <div className={classes.icons}>
-                                <IconButton aria-label='facebook-link'><FacebookIcon/></IconButton>
-                                <IconButton aria-label='twitter-link'><TwitterIcon/></IconButton>
-                                <IconButton aria-label='instagram-link'><InstagramIcon/></IconButton>
+                                <FacebookShareButton
+                                    url={window.location.host+props.location.pathname}
+                                    quote={article.title}
+                                >
+                                    <FacebookIcon/>
+                                </FacebookShareButton>
+                                <TwitterShareButton
+                                    url={window.location.host+props.location.pathname}
+                                    title={article.title}
+                                >
+                                    <TwitterIcon/>
+                                </TwitterShareButton>
+                                <WhatsappShareButton
+                                     url={window.location.host+props.location.pathname}
+                                     title={article.title}
+                                     separator=":: "
+                                >
+                                    <WhatsAppIcon/>
+                                </WhatsappShareButton>
                             </div>
                             <div className={classes.author}>
                                 <Avatar src={avatarUrl} className={classes.avatar}/>
