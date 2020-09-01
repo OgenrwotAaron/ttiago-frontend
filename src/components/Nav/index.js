@@ -6,9 +6,11 @@ import { Toolbar, Button, ButtonGroup, IconButton, Hidden, makeStyles, Typograph
 import FacebookIcon from '@material-ui/icons/Facebook';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import YouTubeIcon from '@material-ui/icons/YouTube';
+import InstagramIcon from '@material-ui/icons/Instagram';
 import HomeIcon from '@material-ui/icons/Home'
 import ArrowDropDownCircleIcon from '@material-ui/icons/KeyboardArrowDown'
 import MenuIcon from '@material-ui/icons/Menu';
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 
 import ReactMoment from 'react-moment'
 import TypeWriter from 'typewriter-effect'
@@ -115,7 +117,7 @@ const useStyles = makeStyles(theme=>({
         position:'fixed',
         zIndex:'99',
         right:15,
-        bottom:'50%',
+        bottom:'40%',
         backgroundColor:'#5ba124',
         color:'#ffffff',
         padding:theme.spacing(0.5,1),
@@ -154,6 +156,12 @@ const useStyles = makeStyles(theme=>({
         justifyContent:'space-between',
         alignItems:'center',
         width:'100%'
+    },
+    arrow:{
+        backgroundColor: "#ffffffa8",
+        position: "absolute",
+        right: "0",
+        bottom:'-40px'
     }
 }))
 
@@ -227,6 +235,7 @@ const Nav = props =>{
                         <IconButton  href='https://www.facebook.com/NILE-Trumpet-Magazine-113588513748029' target='_blank' aria-label='facebook-link'><FacebookIcon style={{color:'#3b5998 '}}/></IconButton>
                         <IconButton  href='https://twitter.com/niletrumpetmag?s=08' target='_blank' aria-label='twitter-link'><TwitterIcon style={{color:'#00acee'}}/></IconButton>
                         <IconButton  href='https://youtu.be/ZSndiJccngs' target='_blank' aria-label='youtube-link'><YouTubeIcon style={{color:'red'}}/></IconButton>
+                        <IconButton  href='https://youtu.be/ZSndiJccngs' target='_blank' aria-label='youtube-link'><InstagramIcon style={{color:'orange'}}/></IconButton>
                     </div>
                     <Typography style={{color:'#5ba124'}}>
                         <ReactMoment format='Do | MMM | YYYY'>{new Date()}</ReactMoment>
@@ -248,14 +257,19 @@ const Nav = props =>{
                         </IconButton>
                         <Link to='/'>
                             <img
-                                src='/favicon.ico'
+                                src='/favicon2.ico'
                                 alt='logo'
-                                style={{width:'40px'}}
+                                style={{width:'60px'}}
                             />
                         </Link>
                         <Typography style={{color:'#5ba124'}}>
                             <ReactMoment format='Do | MMM | YYYY'>{new Date()}</ReactMoment>
                         </Typography>
+                    </div>
+                </Hidden>
+                <Hidden mdUp>
+                    <div className={classes.arrow}>
+                        <ArrowForwardIosIcon/>
                     </div>
                 </Hidden>
                 <Menu

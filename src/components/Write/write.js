@@ -60,8 +60,7 @@ const Write = (props) => {
         'Manuscript should be approximately 600-1200 words.',
         'Manuscript must not be previously published. We hold exclusive rights to what we publish.',
         'Do not submit excerpts from published works, not even your own.',
-        'Include a bio of approximately 250 words based on the following suggestions: Education level, career path, passions, talents, hobbies, goals, accomplishments;  Promotional information—if you have a book out or a relevant product;  Contact information—if you wish to provide your website, FB, Instagram, or email.',
-        'Also attach a headshot picture (directly from a camera or cell phone—not from Facebook).Attach ALL 3 ITEMS to an email and send to ntrumpeteditorial@gmail.com. 1. MANUSCRIPT (word.doc) 2. BIO (word.doc) 3. HEADSHOT Submitting to Editorial indicates full agreement with all terms and conditions of publication.'
+        'Include a bio of approximately 250 words based on the following suggestions: Education level, career path, passions, talents, hobbies, goals, accomplishments;  Promotional information—if you have a book out or a relevant product;  Contact information—if you wish to provide your website, FB, Instagram, or email.'
     ]
 
     return ( 
@@ -71,8 +70,8 @@ const Write = (props) => {
                     <Typography variant='h3' style={{fontWeight:'300', color:'white'}}>
                         Write For Us
                     </Typography>
-                    <Typography variant='caption' style={{color:'white'}}>
-                        NILE Trumpet Magazine
+                    <Typography component='i' style={{color:'white'}}>
+                        NILE Trumpet Magazine | "The Inspirational"
                     </Typography>
                 </div>
             </div>

@@ -15,6 +15,7 @@ import FacebookIcon from '@material-ui/icons/Facebook';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import WhatsAppIcon from '@material-ui/icons/WhatsApp';
 import YouTubeIcon from '@material-ui/icons/YouTube';
+import InstagramIcon from '@material-ui/icons/Instagram';
 //import MailOutlineIcon from '@material-ui/icons/MailOutline';
 
 import { Link } from 'react-router-dom';
@@ -109,7 +110,24 @@ const Footer = props => {
             <div className={classes.ads}>
                 <div className={classes.adContent}>
                     {
-                        ads.filter(ad=>ad.position === 'bottom').map(ad=>(
+                        ads.filter(ad=>ad.position === 'bottom1').map(ad=>(
+                            <a key={ad.id} href={ad.url === null ? "/":`${ad.url}`}>
+                                <div
+                                    style={{
+                                        backgroundImage:`url(${ad.adImage.url})`,
+                                        height:'100%',
+                                        backgroundSize:'contain'
+                                    }}
+                                />
+                            </a>
+                        ))
+                    }
+                </div>
+            </div>
+            <div className={classes.ads}>
+                <div className={classes.adContent}>
+                    {
+                        ads.filter(ad=>ad.position === 'bottom2').map(ad=>(
                             <a key={ad.id} href={ad.url === null ? "/":`${ad.url}`}>
                                 <div
                                     style={{
@@ -184,6 +202,9 @@ const Footer = props => {
                     </IconButton>
                     <IconButton href="intent://send/+256703229038#Intent;scheme=smsto;package=com.whatsapp;action=android.intent.action.SENDTO;end">
                         <WhatsAppIcon style={{color:'#25D366'}}/>
+                    </IconButton>
+                    <IconButton href="#">
+                        <InstagramIcon style={{color:'orange'}}/>
                     </IconButton>
                     </div>
                 </Grid>
