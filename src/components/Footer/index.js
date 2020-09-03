@@ -64,8 +64,6 @@ const Footer = props => {
     const classes = useStyles()
     const { ads } = props
 
-    console.log(ads)
-
     //const [subscribe, setSubscribe] = useState('');
 
     // const handleChange = event =>{
@@ -141,7 +139,7 @@ const Footer = props => {
                     }
                 </div>
             </div>
-            <Grid container spacing={2} className={classes.details}>
+            <Grid container spacing={1} className={classes.details}>
                 <Grid item sm={4}>
                     <Typography style={{fontWeight:'bold'}} component='b'>NILE TRUMPET</Typography>
                     <Link to='/'>
@@ -185,27 +183,27 @@ const Footer = props => {
                 <Grid item sm={3}>
                     <Typography style={{fontWeight:'bold'}} component='b'>CONTACTS</Typography>
                     <div>
-                    <IconButton href='tel:+256789101547'>
-                        <PhoneIcon/>
-                    </IconButton>
-                    <IconButton href='mailto:niletrumpetmagazine@gmail.com' >
-                        <EmailIcon style={{color:'#D44638'}}/>
-                    </IconButton>
-                    <IconButton href='https://www.facebook.com/NILE-Trumpet-Magazine-113588513748029' target='_blank'>
-                        <FacebookIcon style={{color:'#3b5998 '}}/>
-                    </IconButton>
-                    <IconButton href='https://twitter.com/niletrumpetmag?s=08' target='_blank'>
-                        <TwitterIcon style={{color:'#00acee'}}/>
-                    </IconButton>
-                    <IconButton href='https://www.youtube.com/channel/UCn64UEDFUq5m3IPfvVsppsA' target='_blank'>
-                        <YouTubeIcon style={{color:'red'}}/>
-                    </IconButton>
-                    <IconButton href="intent://send/+256703229038#Intent;scheme=smsto;package=com.whatsapp;action=android.intent.action.SENDTO;end">
-                        <WhatsAppIcon style={{color:'#25D366'}}/>
-                    </IconButton>
-                    <IconButton href="#">
-                        <InstagramIcon style={{color:'orange'}}/>
-                    </IconButton>
+                        <IconButton href='tel:+256789101547'>
+                            <PhoneIcon fontSize='small'/>
+                        </IconButton>
+                        <IconButton href='mailto:niletrumpetmagazine@gmail.com' >
+                            <EmailIcon fontSize='small' style={{color:'#D44638'}}/>
+                        </IconButton>
+                        <IconButton href='https://www.facebook.com/NILE-Trumpet-Magazine-113588513748029' target='_blank'>
+                            <FacebookIcon fontSize='small' style={{color:'#3b5998 '}}/>
+                        </IconButton>
+                        <IconButton href='https://twitter.com/niletrumpetmag?s=08' target='_blank'>
+                            <TwitterIcon fontSize='small' style={{color:'#00acee'}}/>
+                        </IconButton>
+                        <IconButton href='https://www.youtube.com/channel/UCn64UEDFUq5m3IPfvVsppsA' target='_blank'>
+                            <YouTubeIcon fontSize='small' style={{color:'red'}}/>
+                        </IconButton>
+                        <IconButton href="intent://send/+256703229038#Intent;scheme=smsto;package=com.whatsapp;action=android.intent.action.SENDTO;end">
+                            <WhatsAppIcon fontSize='small' style={{color:'#25D366'}}/>
+                        </IconButton>
+                        <IconButton href="#">
+                            <InstagramIcon fontSize='small' style={{color:'orange'}}/>
+                        </IconButton>
                     </div>
                 </Grid>
             </Grid>
