@@ -77,7 +77,7 @@ const Article = props => {
     }
 
     const articleImage = props =>{
-        if(props.alt.split('.')[1] === 'jpg' || props.alt.split('.')[1] === 'png' || props.alt.split('.')[1] === 'gif' || props.alt.split('.')[1] === 'svg' || props.alt.split('.')[1] === 'ico'){
+        if(props.alt.split('.')[1] === 'jpg' || props.alt.split('.')[1] === 'jpeg' || props.alt.split('.')[1] === 'png' || props.alt.split('.')[1] === 'gif' || props.alt.split('.')[1] === 'svg' || props.alt.split('.')[1] === 'ico'){
             return (
                 <img {...props} alt={props.alt} style={{maxWidth:'100%'}} />
             )
