@@ -21,7 +21,7 @@ const Authors = (props) => {
             <Grid container spacing={2}>
                 <Query query={TEAMS_QUERY}>
                     {({data:{users}})=>{
-                        return users.map((user,i)=>(
+                        return [...users].sort((a,b)=>a.id-b.id).map((user,i)=>(
                             <Grid item xs={12} sm={6} md={4} key={i}>
                                 <AuthorCard user={user} />
                             </Grid>

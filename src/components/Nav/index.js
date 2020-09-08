@@ -301,6 +301,7 @@ const Nav = props =>{
                 pathname !== '/' && 
                 <Query query={CATEGORIES_QUERY} id={null}>
                     {({ data: { categories } }) => {
+                        let sortedCategory = [...categories].sort((a,b)=>b.articles.length - a.articles.length)
                         return (
                             <div>
                                 <Toolbar component="nav" variant="dense" className={classes.toolbarSecondary}>
@@ -312,7 +313,7 @@ const Nav = props =>{
                                     <Link to='/news'>
                                         <Typography color='textSecondary'>News</Typography>
                                     </Link>
-                                    {categories.map(category=>(
+                                    {sortedCategory.map(category=>(
                                         <Link 
                                             key={category.id}
                                             to={`/category/${category.id}`}

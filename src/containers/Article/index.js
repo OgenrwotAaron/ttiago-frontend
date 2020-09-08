@@ -17,7 +17,8 @@ import CategoryCard from '../../components/CategoryCard';
 const useStyles = makeStyles(theme=>({
     hero:{
         height:'80vh',
-        backgroundSize:'cover'
+        backgroundSize:'cover',
+        backgroundPosition:'bottom'
     },
     heroDrop:{
         backgroundColor:'#00000050',
@@ -28,7 +29,8 @@ const useStyles = makeStyles(theme=>({
         justifyContent:'center'
     },
     title:{
-        color:'white'
+        color:'white',
+        textAlign:'center'
     },
     articleBody:{
         padding:theme.spacing(2,5),

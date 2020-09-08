@@ -114,7 +114,8 @@ const Footer = props => {
                                     style={{
                                         backgroundImage:`url(${ad.adImage.url})`,
                                         height:'100%',
-                                        backgroundSize:'contain'
+                                        backgroundSize:'auto',
+                                        backgroundPosition:'center'
                                     }}
                                 />
                             </a>
@@ -131,7 +132,8 @@ const Footer = props => {
                                     style={{
                                         backgroundImage:`url(${ad.adImage.url})`,
                                         height:'100%',
-                                        backgroundSize:'contain'
+                                        backgroundSize:'auto',
+                                        backgroundPosition:'center'
                                     }}
                                 />
                             </a>
