@@ -136,7 +136,7 @@ const Article = props => {
                             <div className={classes.icons}>
                                 <FacebookShareButton
                                     url={imageUrl}
-                                    quote={`${article.title} \n ${article.content.substring(0,200)}... \n ${window.location.host+props.location.pathname}`}
+                                    quote={`${article.title} \n ${article.content.substring(0,200)}... \n http://${window.location.host+props.location.pathname}`}
                                 >
                                     <FacebookIcon/>
                                 </FacebookShareButton>
