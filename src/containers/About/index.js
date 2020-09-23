@@ -85,7 +85,7 @@ const About = (props) => {
                         </div>
                         <Typography color='textSecondary' variant='h5' style={{fontWeight:'300'}} align='center'>Mission Statement</Typography>
                         <Typography color='textSecondary' align='center' variant='body1'>
-                            We aspire to give you credible, reliable and up-to-date information that shall have an inevitable impact on this society.
+                            We aspire to provide credible, reliable, accessible and up-to-date information for community transformation.
                         </Typography>
                     </Grid>
                 </Grid>
