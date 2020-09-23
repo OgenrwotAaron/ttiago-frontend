@@ -135,13 +135,14 @@ const Article = props => {
                             <Typography className={classes.share} color='textSecondary' align='center'>Share this Article</Typography>
                             <div className={classes.icons}>
                                 <FacebookShareButton
-                                    url={window.location.host+props.location.pathname}
-                                    quote={article.title}
+                                    url={imageUrl}
+                                    quote={`${article.title} \n ${article.content.substring(0,200)}... \n ${window.location.host+props.location.pathname}`}
                                 >
                                     <FacebookIcon/>
                                 </FacebookShareButton>
                                 <TwitterShareButton
-                                    url={window.location.host+props.location.pathname}
+                                    url={`\n ${article.content.substring(0,200)}... http://${window.location.host+props.location.pathname}`}
+                                    media={imageUrl}
                                     title={article.title}
                                 >
                                     <TwitterIcon/>
