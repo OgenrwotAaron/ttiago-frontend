@@ -61,6 +61,9 @@ const useStyles = makeStyles(theme=>({
     },
     related:{
         marginBottom:theme.spacing(4)
+    },
+    articleText:{
+        color:theme.palette.text.secondary
     }
 }))
 
@@ -97,9 +100,9 @@ const Article = props => {
     }
 
     const articleText = props =>(
-        <Typography color='textSecondary' component='span'>
+        <span className={classes.articleText}>
             {props.children}
-        </Typography>
+        </span>
     )
 
     return ( 
