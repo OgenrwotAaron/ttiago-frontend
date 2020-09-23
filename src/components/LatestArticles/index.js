@@ -51,7 +51,7 @@ const LatestArticles = ({articles, ads }) => {
                 <Grid item xs={12} sm={3} md={4}>
                     <Typography variant='h6' component='b'>Advertisement</Typography>
                     <Slick {...settings} >
-                        {ads.map(ad=>{
+                        {ads.filter(ad=>ad.position === 'middle').map(ad=>{
 
                             const imageUrl = process.env.NODE_ENV !== 'development' ? 
                                                 ad.adImage.url
