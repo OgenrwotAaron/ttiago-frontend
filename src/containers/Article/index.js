@@ -130,7 +130,8 @@ const Article = props => {
                             <meta charSet="utf-8" />
                             <title>{article.title}</title>
                             <meta name="title" content={article.title}/>
-                            <meta name="description" content='hello'/>
+                            <meta name="description" content={article.content}/>
+                            <meta name="image" content={imageUrl}/>
 
                             <meta property="og:type" content="website"/>
                             <meta property="og:url" content={`http://${window.location.host+props.location.pathname}/article/${article.id}`}/>
@@ -140,7 +141,7 @@ const Article = props => {
                             <meta property="fb:app_id" content='282357982917696' />
 
                             <meta property="twitter:card" content="summary_large_image"/>
-                            <meta property="twitter:url" content="http://niletrumpetmagazine.com/"/>
+                            <meta property="twitter:url" content={`http://${window.location.host+props.location.pathname}/article/${article.id}`}/>
                             <meta property="twitter:title" content={article.title}/>
                             <meta property="twitter:description" content={article.content}/>
                             <meta property="twitter:image" content={imageUrl}/>
