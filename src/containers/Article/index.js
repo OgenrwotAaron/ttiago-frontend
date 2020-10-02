@@ -3,7 +3,8 @@ import { useParams } from 'react-router-dom';
 import Query from '../../components/Query';
 import ReactMarkdown from 'react-markdown';
 import Moment from 'react-moment';
-import { FacebookShareButton, TwitterShareButton, WhatsappShareButton } from 'react-share'
+import { FacebookShareButton, TwitterShareButton, WhatsappShareButton } from 'react-share';
+import { Helmet } from 'react-helmet'
 
 import FacebookIcon from '@material-ui/icons/Facebook';
 import TwitterIcon from '@material-ui/icons/Twitter';
@@ -125,7 +126,23 @@ const Article = props => {
                                  <Typography className={classes.title} variant='h3'>{article.title}</Typography>
                             </div>
                         </div>
+                        <Helmet>
+                            <title>Health Issues</title>
+                            <meta name="title" content={article.title}/>
+                            <meta name="description" content={article.content}/>
 
+                            <meta property="og:type" content="website"/>
+                            <meta property="og:url" content="http://niletrumpetmagazine.com"/>
+                            <meta property="og:title" content={article.title}/>
+                            <meta property="og:description" content={article.content}/>
+                            <meta property="og:image" content={imageUrl}/>
+
+                            <meta property="twitter:card" content="summary_large_image"/>
+                            <meta property="twitter:url" content="http://niletrumpetmagazine.com/"/>
+                            <meta property="twitter:title" content={article.title}/>
+                            <meta property="twitter:description" content={article.content}/>
+                            <meta property="twitter:image" content={imageUrl}/>
+                        </Helmet>
                         <div className={classes.articleBody}>
                             <ReactMarkdown 
                                 renderers={{
@@ -138,15 +155,12 @@ const Article = props => {
                             <Typography className={classes.share} color='textSecondary' align='center'>Share this Article</Typography>
                             <div className={classes.icons}>
                                 <FacebookShareButton
-                                    url={imageUrl}
-                                    quote={`${article.title} \n ${article.content.substring(0,200)}... \n http://${window.location.host+props.location.pathname}`}
+                                    url={`http://${window.location.host+props.location.pathname}`}
                                 >
                                     <FacebookIcon/>
                                 </FacebookShareButton>
                                 <TwitterShareButton
-                                    url={`\n ${article.content.substring(0,200)}... http://${window.location.host+props.location.pathname}`}
-                                    media={imageUrl}
-                                    title={article.title}
+                                    url={`http://${window.location.host+props.location.pathname}`}
                                 >
                                     <TwitterIcon/>
                                 </TwitterShareButton>
