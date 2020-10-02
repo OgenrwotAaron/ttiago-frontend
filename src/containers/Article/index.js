@@ -132,7 +132,7 @@ const Article = props => {
                             <meta name="description" content={article.content}/>
 
                             <meta property="og:type" content="website"/>
-                            <meta property="og:url" content="http://niletrumpetmagazine.com"/>
+                            <meta property="og:url" content={`http://${window.location.host+props.location.pathname}`}/>
                             <meta property="og:title" content={article.title}/>
                             <meta property="og:description" content={article.content}/>
                             <meta property="og:image" content={imageUrl}/>
