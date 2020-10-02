@@ -136,6 +136,7 @@ const Article = props => {
                             <meta property="og:title" content={article.title}/>
                             <meta property="og:description" content={article.content}/>
                             <meta property="og:image" content={imageUrl}/>
+                            <meta property="og:app_id" content='282357982917696' />
 
                             <meta property="twitter:card" content="summary_large_image"/>
                             <meta property="twitter:url" content="http://niletrumpetmagazine.com/"/>
