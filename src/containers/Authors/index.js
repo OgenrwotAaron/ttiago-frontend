@@ -1,5 +1,6 @@
 import React from 'react';
 import { Typography, Grid, makeStyles } from '@material-ui/core';
+import { Helmet } from 'react-helmet'
 import Query from '../../components/Query';
 
 import TEAMS_QUERY from '../../queries/team/team';
@@ -17,6 +18,10 @@ const Authors = (props) => {
 
     return ( 
         <div className={classes.root}>
+            <Helmet>
+                <meta name='description' content='Our Team Page. Meet the team behind The Nile Trumpet Magazine' />
+                <title>Our Team | Nile Trumpet</title>
+            </Helmet>
             <Typography align='center' style={{padding:'25px', fontWeight:'300'}} color='textSecondary' variant='h3'>Our Team</Typography>
             <Grid container spacing={2}>
                 <Query query={TEAMS_QUERY}>

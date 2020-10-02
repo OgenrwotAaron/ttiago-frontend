@@ -127,9 +127,10 @@ const Article = props => {
                             </div>
                         </div>
                         <Helmet>
-                            <title>Health Issues</title>
+                            <meta charSet="utf-8" />
+                            <title>{article.title}</title>
                             <meta name="title" content={article.title}/>
-                            <meta name="description" content={article.content}/>
+                            <meta name="description" content='hello'/>
 
                             <meta property="og:type" content="website"/>
                             <meta property="og:url" content={`http://${window.location.host+props.location.pathname}`}/>

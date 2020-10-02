@@ -1,5 +1,6 @@
 import React from 'react';
 import { makeStyles, Typography, Grid, List, ListItem, ListItemText } from '@material-ui/core';
+import { Helmet } from 'react-helmet'
 
 import EmojiObjectsOutlinedIcon from '@material-ui/icons/EmojiObjectsOutlined';
 import ExploreOutlinedIcon from '@material-ui/icons/ExploreOutlined';
@@ -56,6 +57,10 @@ const About = (props) => {
 
     return ( 
         <div>
+            <Helmet>
+                <meta name='description' content='About Nile Trumpet Magazine'/>
+                <title>About | Nile Trumpet Magazine</title>
+            </Helmet>
             <div className={classes.hero}>
                 <div className={classes.header}>
                     <Typography variant='h3' style={{color:'white'}}>About Us</Typography>

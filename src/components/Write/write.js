@@ -1,5 +1,6 @@
 import React from 'react';
 import { makeStyles, Typography, List, ListItem, ListItemText } from '@material-ui/core';
+import { Helmet } from 'react-helmet'
 
 const useStyles = makeStyles(theme=>({
     hero:{
@@ -65,6 +66,10 @@ const Write = (props) => {
 
     return ( 
         <div>
+            <Helmet>
+                <meta name='description' content='Write for us. Nile Trumpet Magazine welcomes nonfiction, personal anecdotes that inspire and guide readers to do things differently, inspire others and promote the culture of writing to make the world a better place. We also publish fiction that contains these elements. Consider the following topics: Health; Politics; Luo Content; Poems; Fashion; Sports; Campus jazz; Culture Education; Family, and Relationships; Happiness; Spirituality ;Passion, Business, and Employment.' />
+                <title>Write For Us | Nile Trumpet</title>
+            </Helmet>
             <div className={classes.hero}>
                 <div className={classes.info}>
                     <Typography variant='h3' style={{fontWeight:'300', color:'white'}}>

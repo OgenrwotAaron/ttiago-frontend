@@ -7,6 +7,7 @@ import TwitterIcon from '@material-ui/icons/Twitter';
 import WhatsAppIcon from '@material-ui/icons/WhatsApp';
 import YoutubeIcon from '@material-ui/icons/YouTube';
 import { Alert } from '@material-ui/lab';
+import { Helmet } from 'react-helmet'
 
 const useStyles = makeStyles(theme=>({
     root:{
@@ -81,6 +82,10 @@ const Contact = props => {
 
     return ( 
         <div className={classes.root}>
+            <Helmet>
+                <meta name='description' content='Contact Nile Trumpet Magazine. Hit us up via email, phone, or our social media handles'/>
+                <title>Contact | Nile Trumpet</title>
+            </Helmet>
             <Grid container>
                 <Grid item xs={12} sm={6}>
                     <Typography style={{fontWeight:'bold'}} variant='h2'>
