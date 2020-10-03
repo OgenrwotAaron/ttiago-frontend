@@ -121,7 +121,7 @@ const Article = props => {
                                         process.env.REACT_APP_BACKEND_URL + article.author.avatar.url
 
                 const generateLink = event =>{
-                    Axios.post(`https://ogtag.me/${process.env.REACT_APP_OGTAG_API_KEY}`,{
+                    Axios.post(`https://cors-anywhere.herokuapp.com/https://ogtag.me/${process.env.REACT_APP_OGTAG_API_KEY}`,{
                         url : `http://${window.location.host+props.location.pathname}`,
                         image : imageUrl,
                         description : article.content
