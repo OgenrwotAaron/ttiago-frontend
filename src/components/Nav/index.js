@@ -308,6 +308,7 @@ const Nav = props =>{
                                     <Link to='/'>
                                         <div className={classes.homeButton}>
                                             <HomeIcon style={{color:'white'}} className={classes.homeIcon}/>
+                                            <Typography style={{color:'white', paddingRight:'5px'}}>Home</Typography>
                                         </div>
                                     </Link>
                                     <Link to='/news'>
@@ -346,6 +347,7 @@ const Nav = props =>{
                                                         <Link to='/'>
                                                             <div className={classes.homeButton1}>
                                                                 <HomeIcon style={{color:'#5ba124'}} className={classes.homeIcon}/>
+                                                                <Typography style={{color:'#5ba124', paddingRight:'5px'}}>Home</Typography>
                                                             </div>
                                                         </Link>
                                                         <Link to='/news'>
