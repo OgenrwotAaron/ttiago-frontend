@@ -158,7 +158,7 @@ const Article = props => {
                             <meta property="og:image" content={imageUrl}/>
                             <meta property="fb:app_id" content='282357982917696' />
 
-                            <meta property="twitter:card" content="summary_large_image"/>
+                            <meta name="twitter:card" content="summary_large_image"/>
                             <meta property="twitter:url" content={`http://${window.location.host+props.location.pathname}/article/${article.id}`}/>
                             <meta property="twitter:title" content={article.title}/>
                             <meta property="twitter:description" content={article.content}/>
