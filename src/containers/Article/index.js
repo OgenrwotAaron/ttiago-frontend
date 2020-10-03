@@ -14,6 +14,7 @@ import ARTICLE_QUERY from '../../queries/article/article';
 import CATEGORY_QUERY from '../../queries/category/articles'
 import { makeStyles, Typography, Avatar, Grid } from '@material-ui/core';
 import CategoryCard from '../../components/CategoryCard';
+import Axios from 'axios';
 
 const useStyles = makeStyles(theme=>({
     hero:{
@@ -118,6 +119,17 @@ const Article = props => {
                                         article.author.avatar.url
                                     :
                                         process.env.REACT_APP_BACKEND_URL + article.author.avatar.url
+
+                const generateLink = event =>{
+                    Axios.post(`https://ogtag.me/${process.env.REACT_APP_OGTAG_API_KEY}`,{
+                        url : `http://${window.location.host+props.location.pathname}`,
+                        image : imageUrl,
+                        description : article.content
+                    })
+                    .then(res=>{
+                        console.log(res.data)
+                    })
+                }
                 
                 return (
                     <div>
@@ -158,6 +170,7 @@ const Article = props => {
                             <Typography className={classes.share} color='textSecondary' align='center'>Share this Article</Typography>
                             <div className={classes.icons}>
                                 <FacebookShareButton
+                                    onClick={generateLink}
                                     url={`http://${window.location.host+props.location.pathname}`}
                                 >
                                     <FacebookIcon/>
