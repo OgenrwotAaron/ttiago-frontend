@@ -134,7 +134,7 @@ const Article = props => {
                     })
                     .then(res=>{
                         setShareUrl(res.data.url)
-                        window.open('http://www.facebook.com/sharer.php?s=100&p[title]=YOUR_TITLE&p[summary]=YOUR_DESCRIPTION&p[url]=YOUR_URL&p[images][0]=YOUR_IMAGE','sharer','toolbar=0,status=0,width=580,height=325');
+                        window.open(`http://www.facebook.com/sharer.php?s=100&p[title]=${article.title}&p[summary]=${article.content}&p[url]=${res.data.url}&p[images][0]=YOUR_IMAGE`,'sharer','toolbar=0,status=0,width=580,height=325');
                     })
                 }
                 
