@@ -126,15 +126,11 @@ const Article = props => {
                         url : `http://${window.location.host+props.location.pathname}`,
                         image : imageUrl,
                         description : article.content
-                    },{
-                        'Access-Control-Allow-Origin': 'http://niletrumpetmagazine.com/',
-                        'Access-Control-Allow-Methods': 'GET, POST, PUT, PATCH, POST, DELETE, OPTIONS',
-                        'Access-Control-Allow-Headers': 'Content-Type',
-                        'Access-Control-Max-Age': 86400
                     })
                     .then(res=>{
                         setShareUrl(res.data.url)
-                        window.open(`http://www.facebook.com/sharer.php?s=100&p[title]=${article.title}&p[summary]=${article.content}&p[url]=${res.data.url}&p[images][0]=YOUR_IMAGE`,'sharer','toolbar=0,status=0,width=580,height=325');
+                        document.getElementById('fbShare').click()
+                        console.log(document.getElementById('fbShare'))
                     })
                 }
                 
@@ -180,7 +176,7 @@ const Article = props => {
                                     Fb
                                 </Button>
                                 <FacebookShareButton
-                                    
+                                    id='fbShare'
                                     url={shareUrl}
                                 >
                                     <FacebookIcon/>
