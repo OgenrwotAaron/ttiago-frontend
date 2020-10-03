@@ -12,7 +12,7 @@ import WhatsAppIcon from '@material-ui/icons/WhatsApp';
 
 import ARTICLE_QUERY from '../../queries/article/article';
 import CATEGORY_QUERY from '../../queries/category/articles'
-import { makeStyles, Typography, Avatar, Grid, Button } from '@material-ui/core';
+import { makeStyles, Typography, Avatar, Grid, IconButton } from '@material-ui/core';
 import CategoryCard from '../../components/CategoryCard';
 import Axios from 'axios';
 
@@ -121,7 +121,7 @@ const Article = props => {
                                     :
                                         process.env.REACT_APP_BACKEND_URL + article.author.avatar.url
 
-                const generateLink = event =>{
+                const generateLink = type =>{
                     Axios.post(`https://cors-anywhere.herokuapp.com/https://ogtag.me/${process.env.REACT_APP_OGTAG_API_KEY}`,{
                         url : `http://${window.location.host+props.location.pathname}`,
                         image : imageUrl,
@@ -129,8 +129,11 @@ const Article = props => {
                     })
                     .then(res=>{
                         setShareUrl(res.data.url)
-                        document.getElementById('fbShare').click()
-                        console.log(document.getElementById('fbShare'))
+                        if(type==='fb'){
+                            document.getElementById('fbShare').click()
+                        }else{
+                            document.getElementById('tweetShare').click()
+                        }
                     })
                 }
                 
@@ -172,17 +175,23 @@ const Article = props => {
                             />
                             <Typography className={classes.share} color='textSecondary' align='center'>Share this Article</Typography>
                             <div className={classes.icons}>
-                                <Button onClick={generateLink}>
-                                    Fb
-                                </Button>
+                                <IconButton onClick={()=>generateLink('fb')}>
+                                    <FacebookIcon/>
+                                </IconButton>
                                 <FacebookShareButton
                                     id='fbShare'
                                     url={shareUrl}
+                                    style={{display:'none'}}
                                 >
                                     <FacebookIcon/>
                                 </FacebookShareButton>
+                                <IconButton onClick={()=>generateLink('tweet')}>
+                                    <TwitterIcon/>
+                                </IconButton>
                                 <TwitterShareButton
-                                    url={`http://${window.location.host+props.location.pathname}`}
+                                    url={shareUrl}
+                                    id='tweetShare'
+                                    style={{display:'none'}}
                                 >
                                     <TwitterIcon/>
                                 </TwitterShareButton>
@@ -191,7 +200,7 @@ const Article = props => {
                                      title={article.title}
                                      separator=":: "
                                 >
-                                    <WhatsAppIcon/>
+                                    <WhatsAppIcon style={{color:'#757575'}}/>
                                 </WhatsappShareButton>
                             </div>
                             <div className={classes.author}>
