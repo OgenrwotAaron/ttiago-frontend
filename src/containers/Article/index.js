@@ -125,6 +125,11 @@ const Article = props => {
                         url : `http://${window.location.host+props.location.pathname}`,
                         image : imageUrl,
                         description : article.content
+                    },{
+                        'Access-Control-Allow-Origin': 'http://niletrumpetmagazine.com/',
+                        'Access-Control-Allow-Methods': 'GET, POST, PUT, PATCH, POST, DELETE, OPTIONS',
+                        'Access-Control-Allow-Headers': 'Content-Type',
+                        'Access-Control-Max-Age': 86400
                     })
                     .then(res=>{
                         console.log(res.data)
