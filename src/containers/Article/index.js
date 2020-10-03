@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Query from '../../components/Query';
 import ReactMarkdown from 'react-markdown';
@@ -12,7 +12,7 @@ import WhatsAppIcon from '@material-ui/icons/WhatsApp';
 
 import ARTICLE_QUERY from '../../queries/article/article';
 import CATEGORY_QUERY from '../../queries/category/articles'
-import { makeStyles, Typography, Avatar, Grid } from '@material-ui/core';
+import { makeStyles, Typography, Avatar, Grid, Button } from '@material-ui/core';
 import CategoryCard from '../../components/CategoryCard';
 import Axios from 'axios';
 
@@ -75,6 +75,7 @@ const Article = props => {
 
     let { id } = useParams()
 
+    const [shareUrl, setShareUrl] = useState('');
 
     const handleImageUri = uri =>{
         const imageUrl = process.env.NODE_ENV !== 'development' ? 
@@ -132,7 +133,8 @@ const Article = props => {
                         'Access-Control-Max-Age': 86400
                     })
                     .then(res=>{
-                        console.log(res.data)
+                        setShareUrl(res.data.url)
+                        window.open('http://www.facebook.com/sharer.php?s=100&p[title]=YOUR_TITLE&p[summary]=YOUR_DESCRIPTION&p[url]=YOUR_URL&p[images][0]=YOUR_IMAGE','sharer','toolbar=0,status=0,width=580,height=325');
                     })
                 }
                 
@@ -174,9 +176,12 @@ const Article = props => {
                             />
                             <Typography className={classes.share} color='textSecondary' align='center'>Share this Article</Typography>
                             <div className={classes.icons}>
+                                <Button onClick={generateLink}>
+                                    Fb
+                                </Button>
                                 <FacebookShareButton
-                                    onClick={generateLink}
-                                    url={`http://${window.location.host+props.location.pathname}`}
+                                    
+                                    url={shareUrl}
                                 >
                                     <FacebookIcon/>
                                 </FacebookShareButton>
